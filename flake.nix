@@ -3,15 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    easy_cmake.url = "github:RCMast3r/easy_cmake";
   };
 
-  outputs = { self, nixpkgs, easy_cmake }: 
+  outputs = { self, nixpkgs }: 
   let
-    main_overlay = final: prev: {
-      main = final.callPackage ./default.nix { };
+    matlab_math_overlay = final: prev: {
+      matlab_math = final.callPackage ./default.nix { };
     };
-    my_overlays = [ main_overlay ];
+    my_overlays = [ matlab_math_overlay ];
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       overlays = [ self.overlays.default ];
@@ -22,8 +21,8 @@
 
     packages.x86_64-linux =
       rec {
-        main = pkgs.main;
-        default = main;
+        matlab_math = pkgs.matlab_math;
+        default = matlab_math;
       };
   };
 
