@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.12)
 project(Tire_Model_Codegen)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_INCLUDE_HEADERS_IN_COMPILE_COMMANDS ON)
 
 add_library(matlab_math_lib SHARED
     src/rt_nonfinite.cpp
