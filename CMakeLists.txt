@@ -7,7 +7,6 @@ add_library(matlab_math_lib SHARED
     src/rtGetNaN.cpp
     src/Tire_Model_Codegen.cpp
     src/Tire_Model_Codegen_data.cpp
-    src/ert_main.cpp
 )
 
 target_include_directories(matlab_math_lib PUBLIC
