@@ -7,21 +7,25 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.10
+// Model version                  : 1.13
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Fri Oct  4 03:28:29 2024
+// C/C++ source code generated on : Mon Oct  7 20:11:52 2024
 //
 // Target selection: ert.tlc
-// Embedded hardware selection: Intel->x86-64 (Windows64)
+// Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
 // Code generation objectives: Unspecified
 // Validation result: Not run
 //
 #include "Tire_Model_Codegen.h"
 #include "rtwtypes.h"
 #include <cmath>
-#include <emmintrin.h>
+#include "repelem_u5I1BzYw.h"
+#include "maximum_kQ2v6WLV.h"
+#include "interp1_ctBBGdhl.h"
+#include "minimum_5X1FIofZ.h"
 #include <cstring>
-#include "cmath"
+#include "Tire_Model_Codegen_private.h"
+#include "HT09_Linear_Vehicle_Model.h"
 
 //
 // Output and update for atomic system:
@@ -607,14 +611,6 @@ real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_MZ(const real_T
 }
 
 // Function for MATLAB Function: '<S17>/MATLAB Function'
-void Tire_Model_Codegen::Tire_Model_Codegen_repelem(real_T x, real_T y[100])
-{
-  for (int32_T j{0}; j < 100; j++) {
-    y[j] = x;
-  }
-}
-
-// Function for MATLAB Function: '<S17>/MATLAB Function'
 void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FY_m(const real_T
   R[15], const real_T INPUT[400], real_T FY[100], const real_T *rtd_EPSILON,
   const real_T *rtd_FZO, const real_T *rtd_LCY, const real_T *rtd_LEY, const
@@ -783,103 +779,6 @@ void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FY_m(const real_T
 }
 
 // Function for MATLAB Function: '<S17>/MATLAB Function'
-real_T Tire_Model_Codegen::Tire_Model_Codegen_maximum(const real_T x[100])
-{
-  real_T ex;
-  int32_T idx;
-  int32_T k;
-  if (!std::isnan(x[0])) {
-    idx = 1;
-  } else {
-    boolean_T exitg1;
-    idx = 0;
-    k = 2;
-    exitg1 = false;
-    while ((!exitg1) && (k < 101)) {
-      if (!std::isnan(x[k - 1])) {
-        idx = k;
-        exitg1 = true;
-      } else {
-        k++;
-      }
-    }
-  }
-
-  if (idx == 0) {
-    ex = x[0];
-  } else {
-    ex = x[idx - 1];
-    for (k = idx + 1; k < 101; k++) {
-      real_T x_0;
-      x_0 = x[k - 1];
-      if (ex < x_0) {
-        ex = x_0;
-      }
-    }
-  }
-
-  return ex;
-}
-
-// Function for MATLAB Function: '<S17>/MATLAB Function'
-real_T Tire_Model_Codegen::Tire_Model_Codegen_interp1(const real_T varargin_1
-  [100], const real_T varargin_2[100], real_T varargin_3)
-{
-  real_T x[100];
-  real_T y[100];
-  real_T Vq;
-  real_T xtmp;
-  int32_T i;
-  std::memcpy(&y[0], &varargin_2[0], 100U * sizeof(real_T));
-  std::memcpy(&x[0], &varargin_1[0], 100U * sizeof(real_T));
-  if (varargin_1[1] < varargin_1[0]) {
-    for (i = 0; i < 50; i++) {
-      xtmp = x[i];
-      x[i] = x[99 - i];
-      x[99 - i] = xtmp;
-      xtmp = y[i];
-      y[i] = y[99 - i];
-      y[99 - i] = xtmp;
-    }
-  }
-
-  Vq = (rtNaN);
-  if ((!std::isnan(varargin_3)) && (!(varargin_3 > x[99])) && (!(varargin_3 < x
-        [0]))) {
-    int32_T high_i;
-    int32_T low_ip1;
-    i = 1;
-    low_ip1 = 2;
-    high_i = 100;
-    while (high_i > low_ip1) {
-      int32_T mid_i;
-      mid_i = (i + high_i) >> 1;
-      if (varargin_3 >= x[mid_i - 1]) {
-        i = mid_i;
-        low_ip1 = mid_i + 1;
-      } else {
-        high_i = mid_i;
-      }
-    }
-
-    xtmp = x[i - 1];
-    xtmp = (varargin_3 - xtmp) / (x[i] - xtmp);
-    if (xtmp == 0.0) {
-      Vq = y[i - 1];
-    } else if (xtmp == 1.0) {
-      Vq = y[i];
-    } else {
-      Vq = y[i - 1];
-      if (!(Vq == y[i])) {
-        Vq = (1.0 - xtmp) * Vq + xtmp * y[i];
-      }
-    }
-  }
-
-  return Vq;
-}
-
-// Function for MATLAB Function: '<S17>/MATLAB Function'
 void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FX(const real_T
   R[7], const real_T INPUT[400], real_T FX[100], const real_T *rtd_EPSILON,
   const real_T *rtd_FZO, const real_T *rtd_LCX, const real_T *rtd_LEX, const
@@ -984,45 +883,6 @@ void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FX(const real_T
   }
 }
 
-// Function for MATLAB Function: '<S17>/MATLAB Function'
-real_T Tire_Model_Codegen::Tire_Model_Codegen_minimum(const real_T x[100])
-{
-  real_T ex;
-  int32_T idx;
-  int32_T k;
-  if (!std::isnan(x[0])) {
-    idx = 1;
-  } else {
-    boolean_T exitg1;
-    idx = 0;
-    k = 2;
-    exitg1 = false;
-    while ((!exitg1) && (k < 101)) {
-      if (!std::isnan(x[k - 1])) {
-        idx = k;
-        exitg1 = true;
-      } else {
-        k++;
-      }
-    }
-  }
-
-  if (idx == 0) {
-    ex = x[0];
-  } else {
-    ex = x[idx - 1];
-    for (k = idx + 1; k < 101; k++) {
-      real_T x_0;
-      x_0 = x[k - 1];
-      if (ex > x_0) {
-        ex = x_0;
-      }
-    }
-  }
-
-  return ex;
-}
-
 //
 // Output and update for atomic system:
 //    '<S17>/MATLAB Function'
@@ -1075,14 +935,51 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
   real_T FZrange_tmp[100];
   real_T FxEnvelope[100];
   real_T x[100];
+  real_T rtd_PCX1_0[15];
   real_T INPUT[4];
   real_T MZ_INPUT[4];
+  real_T b_INPUT[3];
   real_T BXALPHA;
   real_T FXO;
   real_T FZOPRIME;
   real_T SA;
   real_T a;
+  real_T b_INPUT_tmp;
   int32_T k;
+  boolean_T b_INPUT_tmp_0;
+  static const real_T b[100]{ -20.0, -19.595959595959595, -19.19191919191919,
+    -18.787878787878789, -18.383838383838384, -17.979797979797979,
+    -17.575757575757574, -17.171717171717173, -16.767676767676768,
+    -16.363636363636363, -15.959595959595958, -15.555555555555555,
+    -15.15151515151515, -14.747474747474747, -14.343434343434343,
+    -13.939393939393939, -13.535353535353535, -13.131313131313131,
+    -12.727272727272727, -12.323232323232324, -11.919191919191919,
+    -11.515151515151516, -11.111111111111111, -10.707070707070708,
+    -10.303030303030303, -9.8989898989899, -9.4949494949494948,
+    -9.09090909090909, -8.6868686868686869, -8.282828282828282,
+    -7.8787878787878789, -7.4747474747474749, -7.0707070707070709,
+    -6.666666666666667, -6.2626262626262621, -5.8585858585858581,
+    -5.4545454545454541, -5.05050505050505, -4.6464646464646462,
+    -4.2424242424242422, -3.8383838383838382, -3.4343434343434343,
+    -3.0303030303030303, -2.6262626262626263, -2.2222222222222223,
+    -1.8181818181818181, -1.4141414141414141, -1.0101010101010102,
+    -0.60606060606060608, -0.20202020202020202, 0.20202020202020202,
+    0.60606060606060608, 1.0101010101010102, 1.4141414141414141,
+    1.8181818181818181, 2.2222222222222223, 2.6262626262626263,
+    3.0303030303030303, 3.4343434343434343, 3.8383838383838382,
+    4.2424242424242422, 4.6464646464646462, 5.05050505050505, 5.4545454545454541,
+    5.8585858585858581, 6.2626262626262621, 6.666666666666667,
+    7.0707070707070709, 7.4747474747474749, 7.8787878787878789,
+    8.282828282828282, 8.6868686868686869, 9.09090909090909, 9.4949494949494948,
+    9.8989898989899, 10.303030303030303, 10.707070707070708, 11.111111111111111,
+    11.515151515151516, 11.919191919191919, 12.323232323232324,
+    12.727272727272727, 13.131313131313131, 13.535353535353535,
+    13.939393939393939, 14.343434343434343, 14.747474747474747,
+    15.15151515151515, 15.555555555555555, 15.959595959595958,
+    16.363636363636363, 16.767676767676768, 17.171717171717173,
+    17.575757575757574, 17.979797979797979, 18.383838383838384,
+    18.787878787878789, 19.19191919191919, 19.595959595959595, 20.0 };
+
   static const real_T b_a[100]{ 0.0, 0.015865963834807928, 0.031727933498067649,
     0.0475819158237423, 0.0634239196565645, 0.079249956856788456,
     0.095056043304182672, 0.11083819990101101, 0.12659245357374926,
@@ -1151,44 +1048,6 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
     0.095056043304182589, 0.079249956856788442, 0.063423919656564562,
     0.047581915823742181, 0.031727933498067594, 0.015865963834807931,
     6.123233995736766E-17 };
-
-  __m128d tmp;
-  real_T rtd_PCX1_0[15];
-  real_T b_INPUT[3];
-  real_T b_INPUT_tmp;
-  boolean_T b_INPUT_tmp_0;
-  static const real_T b[100]{ -20.0, -19.595959595959595, -19.19191919191919,
-    -18.787878787878789, -18.383838383838384, -17.979797979797979,
-    -17.575757575757574, -17.171717171717173, -16.767676767676768,
-    -16.363636363636363, -15.959595959595958, -15.555555555555555,
-    -15.15151515151515, -14.747474747474747, -14.343434343434343,
-    -13.939393939393939, -13.535353535353535, -13.131313131313131,
-    -12.727272727272727, -12.323232323232324, -11.919191919191919,
-    -11.515151515151516, -11.111111111111111, -10.707070707070708,
-    -10.303030303030303, -9.8989898989899, -9.4949494949494948,
-    -9.09090909090909, -8.6868686868686869, -8.282828282828282,
-    -7.8787878787878789, -7.4747474747474749, -7.0707070707070709,
-    -6.666666666666667, -6.2626262626262621, -5.8585858585858581,
-    -5.4545454545454541, -5.05050505050505, -4.6464646464646462,
-    -4.2424242424242422, -3.8383838383838382, -3.4343434343434343,
-    -3.0303030303030303, -2.6262626262626263, -2.2222222222222223,
-    -1.8181818181818181, -1.4141414141414141, -1.0101010101010102,
-    -0.60606060606060608, -0.20202020202020202, 0.20202020202020202,
-    0.60606060606060608, 1.0101010101010102, 1.4141414141414141,
-    1.8181818181818181, 2.2222222222222223, 2.6262626262626263,
-    3.0303030303030303, 3.4343434343434343, 3.8383838383838382,
-    4.2424242424242422, 4.6464646464646462, 5.05050505050505, 5.4545454545454541,
-    5.8585858585858581, 6.2626262626262621, 6.666666666666667,
-    7.0707070707070709, 7.4747474747474749, 7.8787878787878789,
-    8.282828282828282, 8.6868686868686869, 9.09090909090909, 9.4949494949494948,
-    9.8989898989899, 10.303030303030303, 10.707070707070708, 11.111111111111111,
-    11.515151515151516, 11.919191919191919, 12.323232323232324,
-    12.727272727272727, 13.131313131313131, 13.535353535353535,
-    13.939393939393939, 14.343434343434343, 14.747474747474747,
-    15.15151515151515, 15.555555555555555, 15.959595959595958,
-    16.363636363636363, 16.767676767676768, 17.171717171717173,
-    17.575757575757574, 17.979797979797979, 18.383838383838384,
-    18.787878787878789, 19.19191919191919, 19.595959595959595, 20.0 };
 
   static const real_T c[100]{ -0.3, -0.29393939393939394, -0.2878787878787879,
     -0.2818181818181818, -0.27575757575757576, -0.26969696969696971,
@@ -1456,7 +1315,7 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
     rtd_RHY2, rtd_RO, rtd_RVY1, rtd_RVY2, rtd_RVY3, rtd_RVY4, rtd_RVY5, rtd_RVY6,
     rtd_VCX, rtd_ZETA0, rtd_ZETA1, rtd_ZETA2, rtd_ZETA3, rtd_ZETA4, rtd_ZETA5,
     rtd_ZETA6, rtd_ZETA7, rtd_ZETA8);
-  Tire_Model_Codegen_repelem(-rtu_FZ, FZrange_tmp);
+  repelem_u5I1BzYw(-rtu_FZ, FZrange_tmp);
   for (k = 0; k < 100; k++) {
     maxFX_INPUT[k] = 0.0;
     maxFX_INPUT[k + 100] = b[k];
@@ -1475,7 +1334,7 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
     FxEnvelope[k] = std::abs(x[k]);
   }
 
-  BXALPHA = Tire_Model_Codegen_maximum(FxEnvelope);
+  BXALPHA = maximum_kQ2v6WLV(FxEnvelope);
   if (rtu_FZ == 0.0) {
     b_INPUT_tmp = 0.0;
     SA = 0.0;
@@ -1485,19 +1344,18 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
 
   FXO = std::abs(b_INPUT_tmp);
   if (FXO > 0.0) {
-    for (k = 0; k <= 98; k += 2) {
-      tmp = _mm_set1_pd(BXALPHA);
-      _mm_storeu_pd(&FxEnvelope[k], _mm_mul_pd(_mm_loadu_pd(&c_a[k]), tmp));
-      _mm_storeu_pd(&x[k], _mm_mul_pd(_mm_loadu_pd(&b_a[k]), tmp));
+    for (k = 0; k < 100; k++) {
+      FxEnvelope[k] = c_a[k] * BXALPHA;
+      x[k] = b_a[k] * BXALPHA;
     }
 
-    BXALPHA = Tire_Model_Codegen_interp1(FxEnvelope, x, FXO);
+    BXALPHA = interp1_ctBBGdhl(FxEnvelope, x, FXO);
   } else {
-    for (k = 0; k <= 98; k += 2) {
-      _mm_storeu_pd(&x[k], _mm_mul_pd(_mm_loadu_pd(&b_a[k]), _mm_set1_pd(BXALPHA)));
+    for (k = 0; k < 100; k++) {
+      x[k] = b_a[k] * BXALPHA;
     }
 
-    BXALPHA = Tire_Model_Codegen_maximum(x);
+    BXALPHA = maximum_kQ2v6WLV(x);
   }
 
   if (std::abs(SA) > BXALPHA) {
@@ -1530,8 +1388,8 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
       rtd_LMUX, rtd_LMUXPRIME, rtd_LVX, rtd_LXALPHA, rtd_PCX1, rtd_PDX1,
       rtd_PDX2, rtd_PDX3, rtd_PEX1, rtd_PEX2, rtd_PEX3, rtd_PEX4, rtd_PHX1,
       rtd_PHX2, rtd_PKX1, rtd_PKX2, rtd_PKX3, rtd_PVX1, rtd_PVX2, rtd_ZETA1);
-    *rty_satAccelT = Tire_Model_Codegen_maximum(x) * 0.2 / 11.86;
-    *rty_satBrakeT = Tire_Model_Codegen_minimum(FxEnvelope) * 0.2 / 11.86;
+    *rty_satAccelT = maximum_kQ2v6WLV(x) * 0.2 / 11.86;
+    *rty_satBrakeT = minimum_5X1FIofZ(FxEnvelope) * 0.2 / 11.86;
   } else {
     *rty_satAccelT = 0.0;
     *rty_satBrakeT = 0.0;
@@ -1750,26 +1608,25 @@ void Tire_Model_Codegen::step()
   //   Inport: '<Root>/SL FL'
   //   Outport: '<Root>/FZ FL'
 
-  Tire_Model_Codegen_MATLABFunction(Tire_Model_Codegen_ConstP.pooled10,
-    Tire_Model_Codegen_ConstP.pooled11, Tire_Model_Codegen_ConstP.pooled12,
-    Tire_Model_Codegen_ConstP.pooled13, Tire_Model_Codegen_ConstP.pooled14,
-    Tire_Model_Codegen_ConstP.pooled15, Tire_Model_Codegen_ConstP.pooled16,
-    Tire_Model_Codegen_ConstP.pooled9, Tire_Model_Codegen_U.FL, Saturation, -std::
-    abs(-Tire_Model_Codegen_Y.FZFL), 0.0, &COMBINED_FX_c, &COMBINED_FY_o,
-    &COMBINED_MZ_p, &satAccelT_k0, &satBrakeT_f, &AMU, &EPSILON, &FZO, &LCX,
-    &LCY, &LEX, &LEY, &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA,
-    &LKZGAMMA, &LMR, &LMUV, &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST,
-    &LMUYPRIME, &LMX, &LS, &LT, &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1,
-    &PCY1, &PDX1, &PDX2, &PDX3, &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4,
-    &PEY1, &PEY2, &PEY3, &PEY4, &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2,
-    &PKX3, &PKY1, &PKY2, &PKY3, &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1,
-    &PVY2, &PVY3, &PVY4, &QBZ1, &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1,
-    &QDZ1, &QDZ10, &QDZ11, &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9,
-    &QEZ1, &QEZ2, &QEZ3, &QEZ4, &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2,
-    &QSX3, &RBX1, &RBX2, &RBX3, &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1,
-    &REX2, &REY1, &REY2, &RHX1, &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4,
-    &RVY5, &RVY6, &SSZ1, &SSZ2, &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2,
-    &ZETA3, &ZETA4, &ZETA5, &ZETA6, &ZETA7, &ZETA8);
+  Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value, rtCP_Constant4_Value,
+    rtCP_Constant5_Value, rtCP_Constant6_Value, rtCP_Constant7_Value_i,
+    rtCP_Constant8_Value_h, rtCP_Constant9_Value_c, rtCP_Constant10_Value_e,
+    Tire_Model_Codegen_U.FL, Saturation, -std::abs(-Tire_Model_Codegen_Y.FZFL),
+    0.0, &COMBINED_FX_c, &COMBINED_FY_o, &COMBINED_MZ_p, &satAccelT_k0,
+    &satBrakeT_f, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX, &LEY, &LFZO, &LHX,
+    &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR, &LMUV, &LMUX,
+    &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS, &LT, &LVX,
+    &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1, &PDX2, &PDX3,
+    &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2, &PEY3, &PEY4,
+    &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1, &PKY2, &PKY3,
+    &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3, &PVY4, &QBZ1,
+    &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1, &QDZ10, &QDZ11,
+    &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1, &QEZ2, &QEZ3, &QEZ4,
+    &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3, &RBX1, &RBX2, &RBX3,
+    &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2, &REY1, &REY2, &RHX1,
+    &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5, &RVY6, &SSZ1, &SSZ2,
+    &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5, &ZETA6,
+    &ZETA7, &ZETA8);
 
   // Switch: '<S17>/Switch3' incorporates:
   //   Constant: '<S17>/Constant15'
@@ -1802,9 +1659,9 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<S17>/Switch3'
 
-  // Outport: '<Root>/FX FL' incorporates:
+  // Switch: '<S26>/Switch' incorporates:
   //   Gain: '<S26>/Gain8'
-  //   Switch: '<S26>/Switch'
+  //   Outport: '<Root>/FX FL'
 
   Tire_Model_Codegen_Y.FXFL = 0.6 * COMBINED_FX_c;
 
@@ -1858,12 +1715,11 @@ void Tire_Model_Codegen::step()
   //   Inport: '<Root>/SL FR'
   //   Outport: '<Root>/FZ FR'
 
-  Tire_Model_Codegen_MATLABFunction(Tire_Model_Codegen_ConstP.pooled10,
-    Tire_Model_Codegen_ConstP.pooled11, Tire_Model_Codegen_ConstP.pooled12,
-    Tire_Model_Codegen_ConstP.pooled13, Tire_Model_Codegen_ConstP.pooled14,
-    Tire_Model_Codegen_ConstP.pooled15, Tire_Model_Codegen_ConstP.pooled16,
-    Tire_Model_Codegen_ConstP.pooled9, Tire_Model_Codegen_U.FR, Saturation1,
-    -std::abs(-Tire_Model_Codegen_Y.FZFR), 0.0, &rtb_Abs1_hx, &COMBINED_FY_a,
+  Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_a,
+    rtCP_Constant4_Value_a, rtCP_Constant5_Value_j, rtCP_Constant6_Value_h,
+    rtCP_Constant7_Value_ir, rtCP_Constant8_Value_o, rtCP_Constant9_Value_h,
+    rtCP_Constant10_Value_l, Tire_Model_Codegen_U.FR, Saturation1, -std::abs
+    (-Tire_Model_Codegen_Y.FZFR), 0.0, &rtb_Abs1_hx, &COMBINED_FY_a,
     &COMBINED_MZ_e, &satAccelT_k, &COMBINED_FX_c, &AMU, &EPSILON, &FZO, &LCX,
     &LCY, &LEX, &LEY, &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA,
     &LKZGAMMA, &LMR, &LMUV, &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST,
@@ -1910,9 +1766,9 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<S18>/Switch3'
 
-  // Outport: '<Root>/FX FR' incorporates:
+  // Switch: '<S27>/Switch' incorporates:
   //   Gain: '<S27>/Gain8'
-  //   Switch: '<S27>/Switch'
+  //   Outport: '<Root>/FX FR'
 
   Tire_Model_Codegen_Y.FXFR = 0.6 * rtb_Abs1_hx;
 
@@ -1966,12 +1822,11 @@ void Tire_Model_Codegen::step()
   //   Inport: '<Root>/SL RL'
   //   Outport: '<Root>/FZ RL'
 
-  Tire_Model_Codegen_MATLABFunction(Tire_Model_Codegen_ConstP.pooled10,
-    Tire_Model_Codegen_ConstP.pooled11, Tire_Model_Codegen_ConstP.pooled12,
-    Tire_Model_Codegen_ConstP.pooled13, Tire_Model_Codegen_ConstP.pooled14,
-    Tire_Model_Codegen_ConstP.pooled15, Tire_Model_Codegen_ConstP.pooled16,
-    Tire_Model_Codegen_ConstP.pooled9, Tire_Model_Codegen_U.RL, Saturation2,
-    -std::abs(-Tire_Model_Codegen_Y.FZRL), 0.0, &rtb_Abs1_ao, &COMBINED_FY_c,
+  Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_e,
+    rtCP_Constant4_Value_c, rtCP_Constant5_Value_c, rtCP_Constant6_Value_j,
+    rtCP_Constant7_Value_c, rtCP_Constant8_Value_f, rtCP_Constant9_Value_e,
+    rtCP_Constant10_Value_g, Tire_Model_Codegen_U.RL, Saturation2, -std::abs
+    (-Tire_Model_Codegen_Y.FZRL), 0.0, &rtb_Abs1_ao, &COMBINED_FY_c,
     &COMBINED_MZ_g, &satAccelT_a, &rtb_Abs1_hx, &AMU, &EPSILON, &FZO, &LCX, &LCY,
     &LEX, &LEY, &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA,
     &LMR, &LMUV, &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX,
@@ -2017,9 +1872,9 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<S19>/Switch3'
 
-  // Outport: '<Root>/FX RL' incorporates:
+  // Switch: '<S28>/Switch' incorporates:
   //   Gain: '<S28>/Gain8'
-  //   Switch: '<S28>/Switch'
+  //   Outport: '<Root>/FX RL'
 
   Tire_Model_Codegen_Y.FXRL = 0.6 * rtb_Abs1_ao;
 
@@ -2073,26 +1928,25 @@ void Tire_Model_Codegen::step()
   //   Inport: '<Root>/SL RR'
   //   Outport: '<Root>/FZ RR'
 
-  Tire_Model_Codegen_MATLABFunction(Tire_Model_Codegen_ConstP.pooled10,
-    Tire_Model_Codegen_ConstP.pooled11, Tire_Model_Codegen_ConstP.pooled12,
-    Tire_Model_Codegen_ConstP.pooled13, Tire_Model_Codegen_ConstP.pooled14,
-    Tire_Model_Codegen_ConstP.pooled15, Tire_Model_Codegen_ConstP.pooled16,
-    Tire_Model_Codegen_ConstP.pooled9, Tire_Model_Codegen_U.RR, Saturation3,
-    -std::abs(-Tire_Model_Codegen_Y.FZRR), 0.0, &COMBINED_FX, &COMBINED_FY,
-    &COMBINED_MZ, &rtb_Abs1_p, &rtb_Abs1_ao, &AMU, &EPSILON, &FZO, &LCX, &LCY,
-    &LEX, &LEY, &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA,
-    &LMR, &LMUV, &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX,
-    &LS, &LT, &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1,
-    &PDX2, &PDX3, &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2,
-    &PEY3, &PEY4, &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1,
-    &PKY2, &PKY3, &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3,
-    &PVY4, &QBZ1, &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1,
-    &QDZ10, &QDZ11, &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1,
-    &QEZ2, &QEZ3, &QEZ4, &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3,
-    &RBX1, &RBX2, &RBX3, &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2,
-    &REY1, &REY2, &RHX1, &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5,
-    &RVY6, &SSZ1, &SSZ2, &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3,
-    &ZETA4, &ZETA5, &ZETA6, &ZETA7, &ZETA8);
+  Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_c,
+    rtCP_Constant4_Value_i, rtCP_Constant5_Value_f, rtCP_Constant6_Value_je,
+    rtCP_Constant7_Value_h, rtCP_Constant8_Value_ou, rtCP_Constant9_Value_c0,
+    rtCP_Constant10_Value_f, Tire_Model_Codegen_U.RR, Saturation3, -std::abs
+    (-Tire_Model_Codegen_Y.FZRR), 0.0, &COMBINED_FX, &COMBINED_FY, &COMBINED_MZ,
+    &rtb_Abs1_p, &rtb_Abs1_ao, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX, &LEY,
+    &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR, &LMUV,
+    &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS, &LT,
+    &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1, &PDX2, &PDX3,
+    &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2, &PEY3, &PEY4,
+    &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1, &PKY2, &PKY3,
+    &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3, &PVY4, &QBZ1,
+    &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1, &QDZ10, &QDZ11,
+    &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1, &QEZ2, &QEZ3, &QEZ4,
+    &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3, &RBX1, &RBX2, &RBX3,
+    &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2, &REY1, &REY2, &RHX1,
+    &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5, &RVY6, &SSZ1, &SSZ2,
+    &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5, &ZETA6,
+    &ZETA7, &ZETA8);
 
   // Switch: '<S20>/Switch3' incorporates:
   //   Constant: '<S20>/Constant15'
@@ -2123,9 +1977,9 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<S20>/Switch3'
 
-  // Outport: '<Root>/FX RR' incorporates:
+  // Switch: '<S29>/Switch' incorporates:
   //   Gain: '<S29>/Gain8'
-  //   Switch: '<S29>/Switch'
+  //   Outport: '<Root>/FX RR'
 
   Tire_Model_Codegen_Y.FXRR = 0.6 * AMU;
 
@@ -2145,7 +1999,6 @@ void Tire_Model_Codegen::step()
                  0.084317032040472181) != 0.0) {
       // Switch: '<S17>/Switch4' incorporates:
       //   Constant: '<S17>/Constant12'
-      //   Switch: '<S32>/Switch1'
 
       if (Saturation != 0.0) {
         // Switch: '<S32>/Switch1' incorporates:
@@ -2202,7 +2055,6 @@ void Tire_Model_Codegen::step()
                  0.084317032040472181) != 0.0) {
       // Switch: '<S18>/Switch4' incorporates:
       //   Constant: '<S18>/Constant12'
-      //   Switch: '<S35>/Switch1'
 
       if (Saturation1 != 0.0) {
         // Switch: '<S35>/Switch1' incorporates:
@@ -2259,7 +2111,6 @@ void Tire_Model_Codegen::step()
                  0.084317032040472181) != 0.0) {
       // Switch: '<S19>/Switch4' incorporates:
       //   Constant: '<S19>/Constant12'
-      //   Switch: '<S38>/Switch1'
 
       if (Saturation2 != 0.0) {
         // Switch: '<S38>/Switch1' incorporates:
@@ -2316,7 +2167,6 @@ void Tire_Model_Codegen::step()
                  0.084317032040472181) != 0.0) {
       // Switch: '<S20>/Switch4' incorporates:
       //   Constant: '<S20>/Constant12'
-      //   Switch: '<S41>/Switch1'
 
       if (Saturation3 != 0.0) {
         // Switch: '<S41>/Switch1' incorporates:
@@ -2613,12 +2463,42 @@ void Tire_Model_Codegen::step()
   }
 
   // End of MATLAB Function: '<Root>/MATLAB Function'
+
+  // Outport: '<Root>/Linear_Model_Outputs' incorporates:
+  //   Inport: '<Root>/Steering Wheel Angle [Deg]'
+  //   Inport: '<Root>/Vx_VN'
+  //   ModelReference generated from: '<Root>/Model'
+  //   Outport: '<Root>/FZ FL'
+  //   Outport: '<Root>/FZ FR'
+  //   Outport: '<Root>/FZ RL'
+  //   Outport: '<Root>/FZ RR'
+  //   Outport: '<Root>/Psi_dot_LM [deg//s]'
+  //   Outport: '<Root>/Psi_dot_LM [rad//s]'
+  //   Outport: '<Root>/Vy_LM'
+
+  ModelMDLOBJ1.step(&Tire_Model_Codegen_U.SteeringWheelAngleDeg,
+                    &Tire_Model_Codegen_U.Vx_VN, &Tire_Model_Codegen_Y.FZFL,
+                    &Tire_Model_Codegen_Y.FZFR, &Tire_Model_Codegen_Y.FZRL,
+                    &Tire_Model_Codegen_Y.FZRR, &Saturation,
+                    &Tire_Model_Codegen_Y.Linear_Model_Outputs[2],
+                    &Tire_Model_Codegen_Y.Linear_Model_Outputs[4],
+                    &Tire_Model_Codegen_Y.Linear_Model_Outputs[5],
+                    &Tire_Model_Codegen_Y.Vy_LM,
+                    &Tire_Model_Codegen_Y.Psi_dot_LMrads,
+                    &Tire_Model_Codegen_Y.Psi_dot_LMdegs);
+  Tire_Model_Codegen_Y.Linear_Model_Outputs[0] = Saturation;
+  Tire_Model_Codegen_Y.Linear_Model_Outputs[1] = Tire_Model_Codegen_B.signal2;
+  Tire_Model_Codegen_Y.Linear_Model_Outputs[3] = Tire_Model_Codegen_B.signal4;
 }
 
 // Model initialize function
 void Tire_Model_Codegen::initialize()
 {
-  // (no initialization code required)
+  // Model Initialize function for ModelReference Block: '<Root>/Model'
+
+  // Set error status pointer for ModelReference Block: '<Root>/Model'
+  ModelMDLOBJ1.getRTM()->setErrorStatusPointer((&Tire_Model_Codegen_M)
+    ->getErrorStatusPointer());
 }
 
 // Model terminate function
@@ -2634,15 +2514,22 @@ const char_T* Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::getErrorStatus(
 }
 
 void Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::setErrorStatus(const
-  char_T* const volatile aErrorStatus)
+  char_T* const aErrorStatus)
 {
   (errorStatus = aErrorStatus);
+}
+
+const char_T** Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::
+  getErrorStatusPointer()
+{
+  return &errorStatus;
 }
 
 // Constructor
 Tire_Model_Codegen::Tire_Model_Codegen() :
   Tire_Model_Codegen_U(),
   Tire_Model_Codegen_Y(),
+  Tire_Model_Codegen_B(),
   Tire_Model_Codegen_DW(),
   Tire_Model_Codegen_M()
 {

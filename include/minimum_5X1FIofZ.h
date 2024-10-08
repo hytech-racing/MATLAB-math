@@ -3,7 +3,7 @@
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
 //
-// File: Tire_Model_Codegen_types.h
+// File: minimum_5X1FIofZ.h
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
@@ -11,14 +11,13 @@
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
 // C/C++ source code generated on : Mon Oct  7 20:11:52 2024
 //
-// Target selection: ert.tlc
-// Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
-// Code generation objectives: Unspecified
-// Validation result: Not run
-//
-#ifndef Tire_Model_Codegen_types_h_
-#define Tire_Model_Codegen_types_h_
-#endif                                 // Tire_Model_Codegen_types_h_
+#ifndef minimum_5X1FIofZ_h_
+#define minimum_5X1FIofZ_h_
+#include "rtwtypes.h"
+
+extern real_T minimum_5X1FIofZ(const real_T x[100]);
+
+#endif                                 // minimum_5X1FIofZ_h_
 
 //
 // File trailer for generated code.

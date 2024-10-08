@@ -3,7 +3,7 @@
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
 //
-// File: Tire_Model_Codegen_types.h
+// File: repelem_u5I1BzYw.cpp
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
@@ -11,14 +11,16 @@
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
 // C/C++ source code generated on : Mon Oct  7 20:11:52 2024
 //
-// Target selection: ert.tlc
-// Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
-// Code generation objectives: Unspecified
-// Validation result: Not run
-//
-#ifndef Tire_Model_Codegen_types_h_
-#define Tire_Model_Codegen_types_h_
-#endif                                 // Tire_Model_Codegen_types_h_
+#include "rtwtypes.h"
+#include "repelem_u5I1BzYw.h"
+
+// Function for MATLAB Function: '<S17>/MATLAB Function'
+void repelem_u5I1BzYw(real_T x, real_T y[100])
+{
+  for (int32_T j{0}; j < 100; j++) {
+    y[j] = x;
+  }
+}
 
 //
 // File trailer for generated code.

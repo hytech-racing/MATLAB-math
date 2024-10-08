@@ -5,16 +5,11 @@
 //
 // File: rt_nonfinite.h
 //
-// Code generated for Simulink model 'Tire_Model_Codegen'.
+// Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 1.10
+// Model version                  : 2.3
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Fri Oct  4 03:28:29 2024
-//
-// Target selection: ert.tlc
-// Embedded hardware selection: Intel->x86-64 (Windows64)
-// Code generation objectives: Unspecified
-// Validation result: Not run
+// C/C++ source code generated on : Mon Oct  7 20:10:42 2024
 //
 #ifndef rt_nonfinite_h_
 #define rt_nonfinite_h_

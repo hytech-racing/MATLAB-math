@@ -3,7 +3,7 @@
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
 //
-// File: rtGetNaN.h
+// File: HT09_Linear_Vehicle_Model_data.cpp
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
@@ -11,33 +11,20 @@
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
 // C/C++ source code generated on : Mon Oct  7 20:10:42 2024
 //
-#ifndef rtGetNaN_h_
-#define rtGetNaN_h_
+// Target selection: ert.tlc
+// Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
+// Code generation objectives: Unspecified
+// Validation result: Not run
+//
+#include "HT09_Linear_Vehicle_Model.h"
 
-extern "C"
-{
-
-#include "rt_nonfinite.h"
-
-}
-
-#include "rtwtypes.h"
-#ifdef __cplusplus
-
-extern "C"
-{
-
-#endif
-
-  extern real_T rtGetNaN(void);
-  extern real32_T rtGetNaNF(void);
-
-#ifdef __cplusplus
-
-}                                      // extern "C"
-
-#endif
-#endif                                 // rtGetNaN_h_
+// Invariant block signals (default storage)
+const HT09_Linear_Vehicle_Model::ConstB_HT09_Linear_Vehicle_Model_h_T
+  HT09_Linear_Vehicle_Model_ConstB{
+  0.0
+  ,
+  0.0
+};
 
 //
 // File trailer for generated code.
