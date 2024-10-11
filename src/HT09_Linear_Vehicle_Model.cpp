@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 2.3
+// Model version                  : 2.5
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct  7 20:10:42 2024
+// C/C++ source code generated on : Thu Oct 10 20:03:40 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -96,7 +96,7 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   // Switch: '<Root>/Switch' incorporates:
   //   Constant: '<Root>/Constant'
 
-  if (*rtu_Vx != 0.0) {
+  if (*rtu_Vx > 0.0) {
     rtb_Switch = *rtu_Vx;
   } else {
     rtb_Switch = 0.001;
@@ -244,18 +244,6 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   *rty_Vy_LM = rtb_Add;
 }
 
-const char_T* HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
-  getErrorStatus() const
-{
-  return (*(errorStatus));
-}
-
-void HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
-  setErrorStatus(const char_T* const aErrorStatus) const
-{
-  (*(errorStatus) = aErrorStatus);
-}
-
 const char_T** HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
   getErrorStatusPointer() const
 {
@@ -266,6 +254,18 @@ void HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
   setErrorStatusPointer(const char_T** aErrorStatusPointer)
 {
   (errorStatus = aErrorStatusPointer);
+}
+
+const char_T* HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
+  getErrorStatus() const
+{
+  return (*(errorStatus));
+}
+
+void HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
+  setErrorStatus(const char_T* const aErrorStatus) const
+{
+  (*(errorStatus) = aErrorStatus);
 }
 
 // Constructor

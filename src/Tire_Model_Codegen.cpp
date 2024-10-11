@@ -9,7 +9,7 @@
 //
 // Model version                  : 1.13
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct  7 20:11:52 2024
+// C/C++ source code generated on : Thu Oct 10 20:04:12 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -2507,6 +2507,12 @@ void Tire_Model_Codegen::terminate()
   // (no terminate code required)
 }
 
+const char_T** Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::
+  getErrorStatusPointer()
+{
+  return &errorStatus;
+}
+
 const char_T* Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::getErrorStatus()
   const
 {
@@ -2517,12 +2523,6 @@ void Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::setErrorStatus(const
   char_T* const aErrorStatus)
 {
   (errorStatus = aErrorStatus);
-}
-
-const char_T** Tire_Model_Codegen::RT_MODEL_Tire_Model_Codegen_T::
-  getErrorStatusPointer()
-{
-  return &errorStatus;
 }
 
 // Constructor

@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 2.3
+// Model version                  : 2.5
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct  7 20:10:42 2024
+// C/C++ source code generated on : Thu Oct 10 20:03:40 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -51,10 +51,10 @@ class HT09_Linear_Vehicle_Model final
   // Real-time Model Data Structure
   struct RT_MODEL_HT09_Linear_Vehicle_Model_T {
     const char_T **errorStatus;
-    const char_T* getErrorStatus() const;
-    void setErrorStatus(const char_T* const aErrorStatus) const;
     const char_T** getErrorStatusPointer() const;
     void setErrorStatusPointer(const char_T** aErrorStatusPointer);
+    const char_T* getErrorStatus() const;
+    void setErrorStatus(const char_T* const aErrorStatus) const;
   };
 
   // Copy Constructor

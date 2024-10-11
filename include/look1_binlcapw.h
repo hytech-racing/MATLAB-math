@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 2.3
+// Model version                  : 2.5
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct  7 20:10:42 2024
+// C/C++ source code generated on : Thu Oct 10 20:03:40 2024
 //
 #ifndef look1_binlcapw_h_
 #define look1_binlcapw_h_
