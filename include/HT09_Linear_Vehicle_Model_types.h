@@ -3,22 +3,22 @@
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
 //
-// File: Tire_Model_Codegen_types.h
+// File: HT09_Linear_Vehicle_Model_types.h
 //
-// Code generated for Simulink model 'Tire_Model_Codegen'.
+// Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 1.15
+// Model version                  : 2.12
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 19:53:06 2024
+// C/C++ source code generated on : Mon Oct 14 19:46:00 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
 // Code generation objectives: Unspecified
 // Validation result: Not run
 //
-#ifndef Tire_Model_Codegen_types_h_
-#define Tire_Model_Codegen_types_h_
-#endif                                 // Tire_Model_Codegen_types_h_
+#ifndef HT09_Linear_Vehicle_Model_types_h_
+#define HT09_Linear_Vehicle_Model_types_h_
+#endif                                 // HT09_Linear_Vehicle_Model_types_h_
 
 //
 // File trailer for generated code.

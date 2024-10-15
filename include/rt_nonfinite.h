@@ -7,14 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.11
+// Model version                  : 1.14
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Fri Oct  4 18:39:37 2024
-//
-// Target selection: ert.tlc
-// Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
-// Code generation objectives: Unspecified
-// Validation result: Not run
+// C/C++ source code generated on : Mon Oct 14 19:46:33 2024
 //
 #ifndef rt_nonfinite_h_
 #define rt_nonfinite_h_

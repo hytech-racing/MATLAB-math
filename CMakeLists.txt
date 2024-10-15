@@ -6,11 +6,21 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_INCLUDE_HEADERS_IN_COMPILE_COMMANDS ON)
 
 add_library(matlab_math_lib SHARED
-    src/rt_nonfinite.cpp
-    src/rtGetNaN.cpp
-    src/Tire_Model_Codegen.cpp
-    src/Tire_Model_Codegen_data.cpp
+  src/const_params.cpp
+  src/HT09_Linear_Vehicle_Model.cpp
+  src/HT09_Linear_Vehicle_Model_data.cpp
+  src/interp1_ctBBGdhl.cpp
+  src/look1_binlcapw.cpp
+  src/maximum_kQ2v6WLV.cpp
+  src/minimum_5X1FIofZ.cpp
+  src/repelem_u5I1BzYw.cpp
+  src/rtGetNaN.cpp
+  src/rt_nonfinite.cpp
+  src/Tire_Model_Codegen.cpp
 )
+
+
+
 
 target_include_directories(matlab_math_lib PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

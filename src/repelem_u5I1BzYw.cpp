@@ -3,7 +3,7 @@
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
 //
-// File: rtGetNaN.h
+// File: repelem_u5I1BzYw.cpp
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
@@ -11,33 +11,16 @@
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
 // C/C++ source code generated on : Mon Oct 14 19:46:33 2024
 //
-#ifndef rtGetNaN_h_
-#define rtGetNaN_h_
-
-extern "C"
-{
-
-#include "rt_nonfinite.h"
-
-}
-
 #include "rtwtypes.h"
-#ifdef __cplusplus
+#include "repelem_u5I1BzYw.h"
 
-extern "C"
+// Function for MATLAB Function: '<S19>/MATLAB Function'
+void repelem_u5I1BzYw(real_T x, real_T y[100])
 {
-
-#endif
-
-  extern real_T rtGetNaN(void);
-  extern real32_T rtGetNaNF(void);
-
-#ifdef __cplusplus
-
-}                                      // extern "C"
-
-#endif
-#endif                                 // rtGetNaN_h_
+  for (int32_T j{0}; j < 100; j++) {
+    y[j] = x;
+  }
+}
 
 //
 // File trailer for generated code.
