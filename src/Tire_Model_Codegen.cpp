@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.18
+// Model version                  : 1.19
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 03:58:28 2024
+// C/C++ source code generated on : Tue Oct 15 04:04:03 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -2498,7 +2498,7 @@ void Tire_Model_Codegen::step()
     COMBINED_FX_c = 0.0;
   }
 
-  satBrakeT_f = std::abs(COMBINED_FX_c) / 0.6 / 2.0;
+  satBrakeT_f = std::abs(COMBINED_FX_c) / 0.6 / 4.0;
   if (COMBINED_FX_c > 0.0) {
     Tire_Model_Codegen_Y.Torq_Add_RL = -satBrakeT_f * 0.2 / 11.86;
     Tire_Model_Codegen_Y.Torq_Add_RR = satBrakeT_f * 0.2 / 11.86;
