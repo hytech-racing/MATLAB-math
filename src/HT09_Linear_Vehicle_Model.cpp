@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 2.12
+// Model version                  : 2.5
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 19:46:00 2024
+// C/C++ source code generated on : Mon Oct 14 21:55:34 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -20,6 +20,7 @@
 #include "rtwtypes.h"
 #include <cmath>
 #include "look1_binlcapw.h"
+#include "cmath"
 #include "HT09_Linear_Vehicle_Model_private.h"
 
 // Output and update for referenced model: 'HT09_Linear_Vehicle_Model'
@@ -29,25 +30,23 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   real_T *rty_Linear_Model_Output_psi_dot, real_T
   *rty_Linear_Model_Output_Alpha_Deg_Front, real_T
   *rty_Linear_Model_Output_Alpha_Deg_Rear, real_T *rty_Vy_LM, real_T
-  *rty_Psi_dot_LMrads, real_T *rty_Psi_dot_LMdegs, real_T
-  *rty_DesiredYawRaterads)
+  *rty_Psi_dot_LMrads, real_T *rty_Psi_dot_LMdegs, real_T *rty_delta_deg)
 {
-  real_T rtb_Ad_idx_1;
   real_T rtb_Ad_idx_2;
   real_T rtb_Add;
   real_T rtb_Add5;
-  real_T rtb_Add6;
-  real_T rtb_Gain1_j;
+  real_T rtb_Gain1;
   real_T rtb_Gain_d;
   real_T rtb_MatrixConcatenate1_idx_1;
   real_T rtb_MatrixConcatenate3_idx_0;
   real_T rtb_MatrixConcatenate3_idx_1;
+  real_T rtb_Product;
   real_T rtb_Switch;
   real_T tmp;
   real_T tmp_0;
 
   // Lookup_n-D: '<Root>/1-D Lookup Table'
-  rtb_Gain1_j = look1_binlcapw(*rtu_FZ_FLN, rtCP_uDLookupTable_bp01Data,
+  rtb_Gain1 = look1_binlcapw(*rtu_FZ_FLN, rtCP_uDLookupTable_bp01Data,
     rtCP_uDLookupTable_tableData, 40U);
 
   // Lookup_n-D: '<Root>/1-D Lookup Table1'
@@ -60,8 +59,7 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   //   Sum: '<Root>/Add'
   //   Sum: '<Root>/Add1'
 
-  rtb_Switch = 57.295779513082323 * rtb_Gain1_j + 57.295779513082323 *
-    rtb_Switch;
+  rtb_Switch = 57.295779513082323 * rtb_Gain1 + 57.295779513082323 * rtb_Switch;
 
   // Gain: '<Root>/Gain6' incorporates:
   //   Gain: '<Root>/Gain5'
@@ -78,21 +76,21 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   rtb_MatrixConcatenate3_idx_1 = -(0.012657587236929698 * rtb_Gain_d);
 
   // Lookup_n-D: '<Root>/1-D Lookup Table2'
-  rtb_Add5 = look1_binlcapw(*rtu_FZ_RLN, rtCP_uDLookupTable2_bp01Data,
+  rtb_Product = look1_binlcapw(*rtu_FZ_RLN, rtCP_uDLookupTable2_bp01Data,
     rtCP_uDLookupTable2_tableData, 40U);
 
   // Gain: '<Root>/Gain11'
-  rtb_Add5 *= 57.295779513082323;
+  rtb_Product *= 57.295779513082323;
 
   // Lookup_n-D: '<Root>/1-D Lookup Table3'
-  rtb_Add6 = look1_binlcapw(*rtu_FZ_RRN, rtCP_uDLookupTable3_bp01Data,
+  rtb_Add5 = look1_binlcapw(*rtu_FZ_RRN, rtCP_uDLookupTable3_bp01Data,
     rtCP_uDLookupTable3_tableData, 40U);
 
   // Gain: '<Root>/Gain12'
-  rtb_Add6 *= 57.295779513082323;
+  rtb_Add5 *= 57.295779513082323;
 
   // Sum: '<Root>/Add'
-  rtb_Add = (rtb_Switch + rtb_Add5) + rtb_Add6;
+  rtb_Add = (rtb_Switch + rtb_Product) + rtb_Add5;
 
   // Switch: '<Root>/Switch' incorporates:
   //   Constant: '<Root>/Constant'
@@ -106,28 +104,28 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   // End of Switch: '<Root>/Switch'
 
   // Gain: '<Root>/Gain1'
-  rtb_Gain1_j = 250.0 * rtb_Switch;
+  rtb_Gain1 = 250.0 * rtb_Switch;
 
   // Gain: '<Root>/Gain2' incorporates:
   //   Sum: '<Root>/Add2'
 
-  rtb_Add6 = (rtb_Add5 + rtb_Add6) * 0.77999999999999992;
+  rtb_Add5 = (rtb_Product + rtb_Add5) * 0.77999999999999992;
 
   // Product: '<Root>/Product' incorporates:
   //   Constant: '<Root>/Constant2'
 
-  rtb_Add5 = rtb_Switch * 79.003998256666662;
+  rtb_Product = rtb_Switch * 79.003998256666662;
 
   // MATLAB Function: '<Root>/State Space Discretization' incorporates:
   //   Constant: '<Root>/Constant1'
   //   Product: '<Root>/Divide'
 
-  rtb_Add = 1.0 - rtb_Add / rtb_Gain1_j * 0.001;
+  rtb_Add = 1.0 - rtb_Add / rtb_Gain1 * 0.001;
 
   // Sum: '<Root>/Subtract2' incorporates:
   //   Sum: '<Root>/Subtract'
 
-  rtb_Ad_idx_1 = rtb_Gain_d - rtb_Add6;
+  rtb_Ad_idx_2 = rtb_Gain_d - rtb_Add5;
 
   // MATLAB Function: '<Root>/State Space Discretization' incorporates:
   //   Constant: '<Root>/Constant1'
@@ -140,63 +138,76 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   //   Sum: '<Root>/Subtract2'
   //   Sum: '<Root>/Subtract3'
 
-  rtb_MatrixConcatenate1_idx_1 = 0.0 - rtb_Ad_idx_1 / rtb_Add5 * 0.001;
-  rtb_Ad_idx_2 = 0.0 - (rtb_Ad_idx_1 / rtb_Gain1_j - rtb_Switch) * 0.001;
-  rtb_Add5 = 1.0 - (0.755 * rtb_Gain_d + 0.77999999999999992 * rtb_Add6) /
-    rtb_Add5 * 0.001;
+  rtb_MatrixConcatenate1_idx_1 = 0.0 - rtb_Ad_idx_2 / rtb_Product * 0.001;
+  rtb_Ad_idx_2 = 0.0 - (rtb_Ad_idx_2 / rtb_Gain1 - rtb_Switch) * 0.001;
+  rtb_Product = 1.0 - (0.755 * rtb_Gain_d + 0.77999999999999992 * rtb_Add5) /
+    rtb_Product * 0.001;
   if (std::abs(rtb_MatrixConcatenate1_idx_1) > std::abs(rtb_Add)) {
-    rtb_Add6 = rtb_Add / rtb_MatrixConcatenate1_idx_1;
-    rtb_Gain_d = 1.0 / (rtb_Add6 * rtb_Add5 - rtb_Ad_idx_2);
-    rtb_Gain1_j = rtb_Add5 / rtb_MatrixConcatenate1_idx_1 * rtb_Gain_d;
-    rtb_Ad_idx_1 = -rtb_Gain_d;
+    rtb_Add5 = rtb_Add / rtb_MatrixConcatenate1_idx_1;
+    rtb_Gain_d = 1.0 / (rtb_Add5 * rtb_Product - rtb_Ad_idx_2);
+    rtb_Product = rtb_Product / rtb_MatrixConcatenate1_idx_1 * rtb_Gain_d;
+    rtb_Gain1 = -rtb_Gain_d;
     rtb_Ad_idx_2 = -rtb_Ad_idx_2 / rtb_MatrixConcatenate1_idx_1 * rtb_Gain_d;
-    rtb_Gain_d *= rtb_Add6;
+    rtb_Gain_d *= rtb_Add5;
   } else {
-    rtb_Add6 = rtb_MatrixConcatenate1_idx_1 / rtb_Add;
-    rtb_Gain_d = 1.0 / (rtb_Add5 - rtb_Add6 * rtb_Ad_idx_2);
-    rtb_Gain1_j = rtb_Add5 / rtb_Add * rtb_Gain_d;
-    rtb_Ad_idx_1 = -rtb_Add6 * rtb_Gain_d;
+    rtb_Add5 = rtb_MatrixConcatenate1_idx_1 / rtb_Add;
+    rtb_Gain_d = 1.0 / (rtb_Product - rtb_Add5 * rtb_Ad_idx_2);
+    rtb_Product = rtb_Product / rtb_Add * rtb_Gain_d;
+    rtb_Gain1 = -rtb_Add5 * rtb_Gain_d;
     rtb_Ad_idx_2 = -rtb_Ad_idx_2 / rtb_Add * rtb_Gain_d;
   }
 
-  // Sum: '<Root>/Add6'
-  rtb_Add6 = *rtu_DeltaDeg;
-
-  // Gain: '<S1>/Gain1'
-  rtb_Add5 = 0.017453292519943295 * rtb_Add6;
-
-  // Delay: '<S3>/State' incorporates:
-  //   Reshape: '<S3>/RSx'
+  // Delay: '<S2>/State' incorporates:
+  //   Reshape: '<S2>/RSx'
 
   rtb_Add = HT09_Linear_Vehicle_Model_DW.State_DSTATE[0];
-
-  // Sum: '<S3>/dxSum' incorporates:
-  //   Delay: '<S3>/State'
-  //   MATLAB Function: '<Root>/State Space Discretization'
-  //   Product: '<S3>/ProductA'
-
-  tmp = rtb_Gain1_j * HT09_Linear_Vehicle_Model_DW.State_DSTATE[0] +
-    rtb_Ad_idx_2 * HT09_Linear_Vehicle_Model_DW.State_DSTATE[1];
-
-  // Delay: '<S3>/State' incorporates:
-  //   Reshape: '<S3>/RSx'
-
   rtb_MatrixConcatenate1_idx_1 = HT09_Linear_Vehicle_Model_DW.State_DSTATE[1];
 
-  // Sum: '<S3>/dxSum' incorporates:
+  // MATLAB Function: '<Root>/MATLAB Function'
+  rtb_Add5 = *rtu_DeltaDeg;
+  if (*rtu_DeltaDeg > 119.0) {
+    rtb_Add5 = 119.0;
+  }
+
+  if (rtb_Add5 < -130.0) {
+    rtb_Add5 = -130.0;
+  }
+
+  *rty_delta_deg = (rtNaN);
+  if (std::isnan(rtb_Add5)) {
+    *rty_delta_deg = (rtNaN);
+  } else if (!(rtb_Add5 > 119.0)) {
+    rtb_Add5 = (rtb_Add5 - -130.0) / 249.0;
+    if (rtb_Add5 == 0.0) {
+      *rty_delta_deg = 24.0;
+    } else if (rtb_Add5 == 1.0) {
+      *rty_delta_deg = -24.0;
+    } else {
+      *rty_delta_deg = (1.0 - rtb_Add5) * 24.0 + rtb_Add5 * -24.0;
+    }
+  }
+
+  // End of MATLAB Function: '<Root>/MATLAB Function'
+
+  // Gain: '<S1>/Gain1'
+  rtb_Add5 = 0.017453292519943295 * *rty_delta_deg;
+
+  // Sum: '<S2>/dxSum' incorporates:
   //   Concatenate: '<Root>/Matrix Concatenate3'
   //   Constant: '<Root>/Constant1'
-  //   Delay: '<S3>/State'
+  //   Delay: '<S2>/State'
   //   MATLAB Function: '<Root>/State Space Discretization'
-  //   Product: '<S3>/ProductA'
-  //   Product: '<S3>/ProductB'
+  //   Product: '<S2>/ProductA'
+  //   Product: '<S2>/ProductB'
 
-  tmp_0 = rtb_Ad_idx_1 * HT09_Linear_Vehicle_Model_DW.State_DSTATE[0] +
-    rtb_Gain_d * HT09_Linear_Vehicle_Model_DW.State_DSTATE[1];
-  HT09_Linear_Vehicle_Model_DW.State_DSTATE[0] = (0.001 * rtb_Gain1_j *
+  tmp = rtb_Product * HT09_Linear_Vehicle_Model_DW.State_DSTATE[0] +
+    rtb_Ad_idx_2 * HT09_Linear_Vehicle_Model_DW.State_DSTATE[1];
+  tmp_0 = rtb_Gain1 * HT09_Linear_Vehicle_Model_DW.State_DSTATE[0] + rtb_Gain_d *
+    HT09_Linear_Vehicle_Model_DW.State_DSTATE[1];
+  HT09_Linear_Vehicle_Model_DW.State_DSTATE[0] = (0.001 * rtb_Product *
     rtb_MatrixConcatenate3_idx_0 + 0.001 * rtb_Ad_idx_2 *
     rtb_MatrixConcatenate3_idx_1) * rtb_Add5 + tmp;
-  HT09_Linear_Vehicle_Model_DW.State_DSTATE[1] = (0.001 * rtb_Ad_idx_1 *
+  HT09_Linear_Vehicle_Model_DW.State_DSTATE[1] = (0.001 * rtb_Gain1 *
     rtb_MatrixConcatenate3_idx_0 + 0.001 * rtb_Gain_d *
     rtb_MatrixConcatenate3_idx_1) * rtb_Add5 + tmp_0;
 
@@ -207,8 +218,8 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
   //   Sum: '<Root>/Add4'
 
   *rty_Linear_Model_Output_Alpha_Deg_Front = (0.755 *
-    rtb_MatrixConcatenate1_idx_1 + rtb_Add) / rtb_Switch * 57.295779513082323 -
-    rtb_Add6;
+    rtb_MatrixConcatenate1_idx_1 + rtb_Add) / rtb_Switch * 57.295779513082323 - *
+    rty_delta_deg;
 
   // Gain: '<S5>/Gain' incorporates:
   //   Gain: '<Root>/Gain14'
@@ -232,26 +243,6 @@ void HT09_Linear_Vehicle_Model::step(const real_T *rtu_DeltaDeg, const real_T
 
   // SignalConversion generated from: '<Root>/Vy_LM'
   *rty_Vy_LM = rtb_Add;
-
-  // Product: '<Root>/Divide6' incorporates:
-  //   Constant: '<Root>/wb'
-  //   Gain: '<S2>/Gain1'
-  //   Trigonometry: '<Root>/Tan'
-
-  *rty_DesiredYawRaterads = std::tan(0.017453292519943295 * rtb_Add6) *
-    rtb_Switch / 1.535;
-}
-
-const char_T* HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
-  getErrorStatus() const
-{
-  return (*(errorStatus));
-}
-
-void HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
-  setErrorStatus(const char_T* const aErrorStatus) const
-{
-  (*(errorStatus) = aErrorStatus);
 }
 
 const char_T** HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
@@ -264,6 +255,18 @@ void HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
   setErrorStatusPointer(const char_T** aErrorStatusPointer)
 {
   (errorStatus = aErrorStatusPointer);
+}
+
+const char_T* HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
+  getErrorStatus() const
+{
+  return (*(errorStatus));
+}
+
+void HT09_Linear_Vehicle_Model::RT_MODEL_HT09_Linear_Vehicle_Model_T::
+  setErrorStatus(const char_T* const aErrorStatus) const
+{
+  (*(errorStatus) = aErrorStatus);
 }
 
 // Constructor
