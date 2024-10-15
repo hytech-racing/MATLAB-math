@@ -7,17 +7,25 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.15
+// Model version                  : 1.14
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 21:56:07 2024
+// C/C++ source code generated on : Mon Oct 14 19:46:33 2024
 //
 #include "rtwtypes.h"
 #include "interp1_ctBBGdhl.h"
 #include <cstring>
 #include <cmath>
+
+extern "C"
+{
+
 #include "rt_nonfinite.h"
 
-// Function for MATLAB Function: '<S20>/MATLAB Function'
+}
+
+#include "cmath"
+
+// Function for MATLAB Function: '<S19>/MATLAB Function'
 real_T interp1_ctBBGdhl(const real_T varargin_1[100], const real_T varargin_2
   [100], real_T varargin_3)
 {

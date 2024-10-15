@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.16
+// Model version                  : 1.15
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 23:02:37 2024
+// C/C++ source code generated on : Tue Oct 15 02:27:03 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -152,16 +152,18 @@ class Tire_Model_Codegen final
     real_T Torq_Add_FR;                // '<Root>/Torq_Add_FR'
     real_T Torq_Add_RL;                // '<Root>/Torq_Add_RL'
     real_T Torq_Add_RR;                // '<Root>/Torq_Add_RR'
-    real_T Des_Psi_dot;                // '<Root>/Des_Psi_dot'
-    real_T Psi_dot_err;                // '<Root>/Psi_dot_err'
+    real_T DesiredYawRaterads;         // '<Root>/Desired Yaw Rate [rad//s]'
+    real_T Perceived_Vx;               // '<Root>/Perceived_Vx'
+    real_T Yaw_Rate_Err;               // '<Root>/Yaw_Rate_Err'
+    real_T Integral_Yaw_Rate_Err;      // '<Root>/Integral_Yaw_Rate_Err'
   };
 
   // Real-time Model Data Structure
   struct RT_MODEL_Tire_Model_Codegen_T {
     const char_T *errorStatus;
-    const char_T** getErrorStatusPointer();
     const char_T* getErrorStatus() const;
     void setErrorStatus(const char_T* const aErrorStatus);
+    const char_T** getErrorStatusPointer();
   };
 
   // Copy Constructor
@@ -221,12 +223,12 @@ class Tire_Model_Codegen final
   // Block states
   DW_Tire_Model_Codegen_T Tire_Model_Codegen_DW;
 
-  // private member function(s) for subsystem '<S2>/MATLAB Function1'
+  // private member function(s) for subsystem '<S1>/MATLAB Function1'
   static void Tire_Model_Codegen_MATLABFunction1(real_T rtu_LC_Raw, real_T
     rtu_interp_X, real_T rtu_interp_X_m, real_T rtu_interp_X_b, real_T
     rtu_interp_Y, real_T rtu_interp_Y_o, real_T rtu_interp_Y_a, real_T *rty_FZ);
 
-  // private member function(s) for subsystem '<S20>/MATLAB Function'
+  // private member function(s) for subsystem '<S19>/MATLAB Function'
   void Tire_Model_Codegen_MATLABFunction(const real_T rtu_LAMBDA[37], const
     real_T rtu_A[22], const real_T rtu_B[27], const real_T rtu_C[3], const
     real_T rtu_D[15], const real_T rtu_E[7], const real_T rtu_F[15], const
@@ -385,51 +387,50 @@ class Tire_Model_Codegen final
 //  Here is the system hierarchy for this model
 //
 //  '<Root>' : 'Tire_Model_Codegen'
-//  '<S1>'   : 'Tire_Model_Codegen/Degrees to Radians'
-//  '<S2>'   : 'Tire_Model_Codegen/Load Cell Interpreter'
-//  '<S3>'   : 'Tire_Model_Codegen/MATLAB Function'
-//  '<S4>'   : 'Tire_Model_Codegen/MATLAB Function2'
-//  '<S5>'   : 'Tire_Model_Codegen/MATLAB Function3'
-//  '<S6>'   : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega'
-//  '<S7>'   : 'Tire_Model_Codegen/Tire Model Pacejka 5.2'
-//  '<S8>'   : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function1'
-//  '<S9>'   : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function2'
-//  '<S10>'  : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function3'
-//  '<S11>'  : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function4'
-//  '<S12>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem'
-//  '<S13>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem1'
-//  '<S14>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem2'
-//  '<S15>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem3'
-//  '<S16>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN'
-//  '<S17>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN1'
-//  '<S18>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN2'
-//  '<S19>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN3'
-//  '<S20>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL'
-//  '<S21>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1'
-//  '<S22>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2'
-//  '<S23>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3'
-//  '<S24>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees'
-//  '<S25>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees1'
-//  '<S26>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees2'
-//  '<S27>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees3'
-//  '<S28>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Subsystem'
-//  '<S29>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X'
-//  '<S30>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X1'
-//  '<S31>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X2'
-//  '<S32>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X3'
-//  '<S33>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FORCE SAE --> FLU TRANSFORMATION'
-//  '<S34>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL/MATLAB Function'
-//  '<S35>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL/SA Extrapolation Constraint1'
-//  '<S36>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL/SL Extrapolation Constraint1'
-//  '<S37>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1/MATLAB Function'
-//  '<S38>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1/SA Extrapolation Constraint1'
-//  '<S39>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1/SL Extrapolation Constraint1'
-//  '<S40>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2/MATLAB Function'
-//  '<S41>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2/SA Extrapolation Constraint1'
-//  '<S42>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2/SL Extrapolation Constraint1'
-//  '<S43>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3/MATLAB Function'
-//  '<S44>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3/SA Extrapolation Constraint1'
-//  '<S45>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3/SL Extrapolation Constraint1'
+//  '<S1>'   : 'Tire_Model_Codegen/Load Cell Interpreter'
+//  '<S2>'   : 'Tire_Model_Codegen/MATLAB Function'
+//  '<S3>'   : 'Tire_Model_Codegen/MATLAB Function2'
+//  '<S4>'   : 'Tire_Model_Codegen/MATLAB Function3'
+//  '<S5>'   : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega'
+//  '<S6>'   : 'Tire_Model_Codegen/Tire Model Pacejka 5.2'
+//  '<S7>'   : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function1'
+//  '<S8>'   : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function2'
+//  '<S9>'   : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function3'
+//  '<S10>'  : 'Tire_Model_Codegen/Load Cell Interpreter/MATLAB Function4'
+//  '<S11>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem'
+//  '<S12>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem1'
+//  '<S13>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem2'
+//  '<S14>'  : 'Tire_Model_Codegen/Motor RPM --> Wheel Omega/Subsystem3'
+//  '<S15>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN'
+//  '<S16>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN1'
+//  '<S17>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN2'
+//  '<S18>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/FY DIRECTIONAL CONSTRAIN3'
+//  '<S19>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL'
+//  '<S20>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1'
+//  '<S21>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2'
+//  '<S22>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3'
+//  '<S23>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees'
+//  '<S24>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees1'
+//  '<S25>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees2'
+//  '<S26>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Radians to Degrees3'
+//  '<S27>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/Subsystem'
+//  '<S28>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X'
+//  '<S29>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X1'
+//  '<S30>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X2'
+//  '<S31>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FACTOR X3'
+//  '<S32>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/TIRE FORCE SAE --> FLU TRANSFORMATION'
+//  '<S33>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL/MATLAB Function'
+//  '<S34>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL/SA Extrapolation Constraint1'
+//  '<S35>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL/SL Extrapolation Constraint1'
+//  '<S36>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1/MATLAB Function'
+//  '<S37>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1/SA Extrapolation Constraint1'
+//  '<S38>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL1/SL Extrapolation Constraint1'
+//  '<S39>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2/MATLAB Function'
+//  '<S40>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2/SA Extrapolation Constraint1'
+//  '<S41>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL2/SL Extrapolation Constraint1'
+//  '<S42>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3/MATLAB Function'
+//  '<S43>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3/SA Extrapolation Constraint1'
+//  '<S44>'  : 'Tire_Model_Codegen/Tire Model Pacejka 5.2/PACEJKA 5.2 FL3/SL Extrapolation Constraint1'
 
 #endif                                 // Tire_Model_Codegen_h_
 

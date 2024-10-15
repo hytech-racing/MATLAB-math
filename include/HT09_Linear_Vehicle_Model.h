@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 2.5
+// Model version                  : 2.13
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 21:55:34 2024
+// C/C++ source code generated on : Tue Oct 15 02:20:40 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -22,14 +22,7 @@
 #include "rtwtypes.h"
 #include "rt_nonfinite.h"
 #include "HT09_Linear_Vehicle_Model_types.h"
-
-extern "C"
-{
-
 #include "rtGetNaN.h"
-
-}
-
 #include <cstring>
 
 // Class declaration for model HT09_Linear_Vehicle_Model
@@ -39,7 +32,7 @@ class HT09_Linear_Vehicle_Model final
  public:
   // Block states (default storage) for model 'HT09_Linear_Vehicle_Model'
   struct DW_HT09_Linear_Vehicle_Model_T {
-    real_T State_DSTATE[2];            // '<S2>/State'
+    real_T State_DSTATE[2];            // '<S3>/State'
   };
 
   // Invariant block signals for model 'HT09_Linear_Vehicle_Model'
@@ -51,10 +44,10 @@ class HT09_Linear_Vehicle_Model final
   // Real-time Model Data Structure
   struct RT_MODEL_HT09_Linear_Vehicle_Model_T {
     const char_T **errorStatus;
-    const char_T** getErrorStatusPointer() const;
-    void setErrorStatusPointer(const char_T** aErrorStatusPointer);
     const char_T* getErrorStatus() const;
     void setErrorStatus(const char_T* const aErrorStatus) const;
+    const char_T** getErrorStatusPointer() const;
+    void setErrorStatusPointer(const char_T** aErrorStatusPointer);
   };
 
   // Copy Constructor
@@ -81,7 +74,7 @@ class HT09_Linear_Vehicle_Model final
             *rty_Linear_Model_Output_Alpha_Deg_Front, real_T
             *rty_Linear_Model_Output_Alpha_Deg_Rear, real_T *rty_Vy_LM, real_T
             *rty_Psi_dot_LMrads, real_T *rty_Psi_dot_LMdegs, real_T
-            *rty_delta_deg);
+            *rty_DesiredYawRaterads);
 
   // Constructor
   HT09_Linear_Vehicle_Model();
@@ -107,11 +100,11 @@ extern const HT09_Linear_Vehicle_Model::ConstB_HT09_Linear_Vehicle_Model_h_T
 //
 //  Block '<Root>/Constant3' : Unused code path elimination
 //  Block '<Root>/Constant4' : Unused code path elimination
-//  Block '<S2>/ProductC' : Unused code path elimination
-//  Block '<S2>/ProductD' : Unused code path elimination
-//  Block '<S2>/RSdx' : Unused code path elimination
-//  Block '<S2>/RSy' : Unused code path elimination
-//  Block '<S2>/ySum' : Unused code path elimination
+//  Block '<S3>/ProductC' : Unused code path elimination
+//  Block '<S3>/ProductD' : Unused code path elimination
+//  Block '<S3>/RSdx' : Unused code path elimination
+//  Block '<S3>/RSy' : Unused code path elimination
+//  Block '<S3>/ySum' : Unused code path elimination
 //  Block '<Root>/Display' : Unused code path elimination
 //  Block '<Root>/Display1' : Unused code path elimination
 //  Block '<Root>/Display2' : Unused code path elimination
@@ -133,12 +126,13 @@ extern const HT09_Linear_Vehicle_Model::ConstB_HT09_Linear_Vehicle_Model_h_T
 //
 //  '<Root>' : 'HT09_Linear_Vehicle_Model'
 //  '<S1>'   : 'HT09_Linear_Vehicle_Model/Degrees to Radians'
-//  '<S2>'   : 'HT09_Linear_Vehicle_Model/Discrete Varying State Space'
-//  '<S3>'   : 'HT09_Linear_Vehicle_Model/MATLAB Function'
-//  '<S4>'   : 'HT09_Linear_Vehicle_Model/Radians to Degrees'
-//  '<S5>'   : 'HT09_Linear_Vehicle_Model/Radians to Degrees1'
-//  '<S6>'   : 'HT09_Linear_Vehicle_Model/Radians to Degrees2'
-//  '<S7>'   : 'HT09_Linear_Vehicle_Model/State Space Discretization'
+//  '<S2>'   : 'HT09_Linear_Vehicle_Model/Degrees to Radians2'
+//  '<S3>'   : 'HT09_Linear_Vehicle_Model/Discrete Varying State Space'
+//  '<S4>'   : 'HT09_Linear_Vehicle_Model/MATLAB Function'
+//  '<S5>'   : 'HT09_Linear_Vehicle_Model/Radians to Degrees'
+//  '<S6>'   : 'HT09_Linear_Vehicle_Model/Radians to Degrees1'
+//  '<S7>'   : 'HT09_Linear_Vehicle_Model/Radians to Degrees2'
+//  '<S8>'   : 'HT09_Linear_Vehicle_Model/State Space Discretization'
 
 #endif                                 // HT09_Linear_Vehicle_Model_h_
 
