@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.15
+// Model version                  : 1.16
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 21:56:07 2024
+// C/C++ source code generated on : Mon Oct 14 23:02:37 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -152,6 +152,8 @@ class Tire_Model_Codegen final
     real_T Torq_Add_FR;                // '<Root>/Torq_Add_FR'
     real_T Torq_Add_RL;                // '<Root>/Torq_Add_RL'
     real_T Torq_Add_RR;                // '<Root>/Torq_Add_RR'
+    real_T Des_Psi_dot;                // '<Root>/Des_Psi_dot'
+    real_T Psi_dot_err;                // '<Root>/Psi_dot_err'
   };
 
   // Real-time Model Data Structure

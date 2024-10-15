@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.15
+// Model version                  : 1.16
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 21:56:07 2024
+// C/C++ source code generated on : Mon Oct 14 23:02:37 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -2484,20 +2484,20 @@ void Tire_Model_Codegen::step()
   //   Switch: '<Root>/Switch3'
 
   if (Tire_Model_Codegen_U.useFakeData > 0.0) {
-    satBrakeT_f = Tire_Model_Codegen_U.Fake_Vx;
+    Saturation = Tire_Model_Codegen_U.Fake_Vx;
   } else if (Tire_Model_Codegen_U.Vx_VN > 0.0) {
     // Switch: '<Root>/Switch3' incorporates:
     //   Inport: '<Root>/Vx_VN'
 
-    satBrakeT_f = Tire_Model_Codegen_U.Vx_VN;
+    Saturation = Tire_Model_Codegen_U.Vx_VN;
   } else {
-    satBrakeT_f = 0.001;
+    Saturation = 0.001;
   }
 
   // End of Switch: '<Root>/Switch1'
 
   // Switch: '<Root>/Switch'
-  rtb_Switch = !(satBrakeT_f > 2.5);
+  rtb_Switch = !(Saturation > 2.5);
 
   // DiscreteIntegrator: '<Root>/Discrete-Time Integrator'
   if (((rtb_Switch > 0) &&
@@ -2517,22 +2517,22 @@ void Tire_Model_Codegen::step()
   //   Constant: '<Root>/Constant3'
   //   Inport: '<Root>/Initial Torq Req FL'
 
-  COMBINED_FX_c = Tire_Model_Codegen_Y.AdditionalMzNm;
+  satBrakeT_f = Tire_Model_Codegen_Y.AdditionalMzNm;
   if (Tire_Model_Codegen_U.InitialTorqReqFL <= 0.0) {
-    COMBINED_FX_c = 0.0;
+    satBrakeT_f = 0.0;
   }
 
   Tire_Model_Codegen_Y.Torq_Add_FL = 0.0;
   Tire_Model_Codegen_Y.Torq_Add_FR = 0.0;
   Tire_Model_Codegen_Y.Torq_Add_RL = 0.0;
   Tire_Model_Codegen_Y.Torq_Add_RR = 0.0;
-  if (COMBINED_FX_c > 0.0) {
-    Tire_Model_Codegen_Y.Torq_Add_FR = std::abs(COMBINED_FX_c) / 0.6 / 2.0 * 0.2
-      / 11.86;
+  if (satBrakeT_f > 0.0) {
+    Tire_Model_Codegen_Y.Torq_Add_FR = std::abs(satBrakeT_f) / 0.6 / 2.0 * 0.2 /
+      11.86;
     Tire_Model_Codegen_Y.Torq_Add_RR = Tire_Model_Codegen_Y.Torq_Add_FR;
   } else {
-    Tire_Model_Codegen_Y.Torq_Add_FL = std::abs(COMBINED_FX_c) / 0.6 / 2.0 * 0.2
-      / 11.86;
+    Tire_Model_Codegen_Y.Torq_Add_FL = std::abs(satBrakeT_f) / 0.6 / 2.0 * 0.2 /
+      11.86;
     Tire_Model_Codegen_Y.Torq_Add_RL = Tire_Model_Codegen_Y.Torq_Add_FL;
   }
 
@@ -2546,23 +2546,23 @@ void Tire_Model_Codegen::step()
   //   Inport: '<Root>/Initial Torq Req RL'
   //   Inport: '<Root>/Initial Torq Req RR'
 
-  satAccelT_k0 = ((Tire_Model_Codegen_U.InitialTorqReqFL +
-                   Tire_Model_Codegen_U.InitialTorqReqFR) +
-                  Tire_Model_Codegen_U.InitialTorqReqRL) +
+  COMBINED_FX_c = ((Tire_Model_Codegen_U.InitialTorqReqFL +
+                    Tire_Model_Codegen_U.InitialTorqReqFR) +
+                   Tire_Model_Codegen_U.InitialTorqReqRL) +
     Tire_Model_Codegen_U.InitialTorqReqRR;
-  if (satAccelT_k0 >= 0.0) {
-    satAccelT_k = satAccelT_k0 * Tire_Model_Codegen_U.DriveBiasFront / 2.0;
-    rtb_Abs1_hx = satAccelT_k;
-    COMBINED_FX_c = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * satAccelT_k0 /
+  if (COMBINED_FX_c >= 0.0) {
+    rtb_Abs1_hx = COMBINED_FX_c * Tire_Model_Codegen_U.DriveBiasFront / 2.0;
+    satAccelT_k0 = rtb_Abs1_hx;
+    satBrakeT_f = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * COMBINED_FX_c /
       2.0;
-    satAccelT_k0 = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * satAccelT_k0 /
+    COMBINED_FX_c = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * COMBINED_FX_c /
       2.0;
   } else {
-    satAccelT_k = satAccelT_k0 * Tire_Model_Codegen_U.BrakeBiasFront / 2.0;
-    rtb_Abs1_hx = satAccelT_k;
-    COMBINED_FX_c = (1.0 - Tire_Model_Codegen_U.BrakeBiasFront) * satAccelT_k0 /
+    rtb_Abs1_hx = COMBINED_FX_c * Tire_Model_Codegen_U.BrakeBiasFront / 2.0;
+    satAccelT_k0 = rtb_Abs1_hx;
+    satBrakeT_f = (1.0 - Tire_Model_Codegen_U.BrakeBiasFront) * COMBINED_FX_c /
       2.0;
-    satAccelT_k0 = COMBINED_FX_c;
+    COMBINED_FX_c = satBrakeT_f;
   }
 
   // End of MATLAB Function: '<Root>/MATLAB Function2'
@@ -2571,25 +2571,25 @@ void Tire_Model_Codegen::step()
   //   Sum: '<Root>/Sum1'
 
   Tire_Model_Codegen_Y.torq_req_FL = Tire_Model_Codegen_Y.Torq_Add_FL +
-    satAccelT_k;
+    rtb_Abs1_hx;
 
   // Outport: '<Root>/torq_req_FR' incorporates:
   //   Sum: '<Root>/Sum2'
 
   Tire_Model_Codegen_Y.torq_req_FR = Tire_Model_Codegen_Y.Torq_Add_FR +
-    rtb_Abs1_hx;
+    satAccelT_k0;
 
   // Outport: '<Root>/torq_req_RL' incorporates:
   //   Sum: '<Root>/Sum3'
 
   Tire_Model_Codegen_Y.torq_req_RL = Tire_Model_Codegen_Y.Torq_Add_RL +
-    COMBINED_FX_c;
+    satBrakeT_f;
 
   // Outport: '<Root>/torq_req_RR' incorporates:
   //   Sum: '<Root>/Sum4'
 
   Tire_Model_Codegen_Y.torq_req_RR = Tire_Model_Codegen_Y.Torq_Add_RR +
-    satAccelT_k0;
+    COMBINED_FX_c;
 
   // Outport: '<Root>/Linear_Model_Outputs' incorporates:
   //   Inport: '<Root>/Steering Wheel Angle [Deg]'
@@ -2602,7 +2602,7 @@ void Tire_Model_Codegen::step()
   //   Outport: '<Root>/Psi_dot_LM [rad//s]'
   //   Outport: '<Root>/Vy_LM'
 
-  ModelMDLOBJ1.step(&Tire_Model_Codegen_U.SteeringWheelAngleDeg, &satBrakeT_f,
+  ModelMDLOBJ1.step(&Tire_Model_Codegen_U.SteeringWheelAngleDeg, &Saturation,
                     &Tire_Model_Codegen_Y.FZFL, &Tire_Model_Codegen_Y.FZFR,
                     &Tire_Model_Codegen_Y.FZRL, &Tire_Model_Codegen_Y.FZRR,
                     &(&Tire_Model_Codegen_Y.Linear_Model_Outputs[0])[0],
@@ -2611,31 +2611,39 @@ void Tire_Model_Codegen::step()
                     &Tire_Model_Codegen_Y.Linear_Model_Outputs[5],
                     &Tire_Model_Codegen_Y.Vy_LM,
                     &Tire_Model_Codegen_Y.Psi_dot_LMrads,
-                    &Tire_Model_Codegen_Y.Psi_dot_LMdegs, &COMBINED_FX_c);
+                    &Tire_Model_Codegen_Y.Psi_dot_LMdegs, &satBrakeT_f);
   Tire_Model_Codegen_Y.Linear_Model_Outputs[1] = Tire_Model_Codegen_B.signal2;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[3] = Tire_Model_Codegen_B.signal4;
 
-  // Switch: '<Root>/Switch2' incorporates:
-  //   Constant: '<Root>/Constant4'
+  // Product: '<Root>/Divide' incorporates:
   //   Constant: '<Root>/Constant6'
   //   Gain: '<S1>/Gain1'
-  //   Inport: '<Root>/Psi_dot_VN [rad//s]'
-  //   Product: '<Root>/Divide'
   //   Product: '<Root>/Product'
-  //   Sum: '<Root>/Sum'
   //   Trigonometry: '<Root>/Tan'
 
-  if (satBrakeT_f > 2.5) {
-    satBrakeT_f = std::tan(0.017453292519943295 * COMBINED_FX_c) * satBrakeT_f /
-      1.535 - Tire_Model_Codegen_U.Psi_dot_VNrads;
+  Tire_Model_Codegen_Y.Des_Psi_dot = std::tan(0.017453292519943295 * satBrakeT_f)
+    * Saturation / 1.535;
+
+  // Switch: '<Root>/Switch2'
+  if (Saturation > 2.5) {
+    // Switch: '<Root>/Switch2' incorporates:
+    //   Inport: '<Root>/Psi_dot_VN [rad//s]'
+    //   Sum: '<Root>/Sum'
+
+    Tire_Model_Codegen_Y.Psi_dot_err = Tire_Model_Codegen_Y.Des_Psi_dot -
+      Tire_Model_Codegen_U.Psi_dot_VNrads;
   } else {
-    satBrakeT_f = 0.0;
+    // Switch: '<Root>/Switch2' incorporates:
+    //   Constant: '<Root>/Constant4'
+
+    Tire_Model_Codegen_Y.Psi_dot_err = 0.0;
   }
 
   // End of Switch: '<Root>/Switch2'
 
   // Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator'
-  Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE += 0.001 * satBrakeT_f;
+  Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE += 0.001 *
+    Tire_Model_Codegen_Y.Psi_dot_err;
   if (rtb_Switch > 0) {
     Tire_Model_Codegen_DW.DiscreteTimeIntegrator_PrevResetState = 1;
   } else {
