@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.19
+// Model version                  : 1.20
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 04:04:03 2024
+// C/C++ source code generated on : Tue Oct 15 04:41:13 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -2483,10 +2483,11 @@ void Tire_Model_Codegen::step()
     Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE = 0.0;
   }
 
-  // Gain: '<Root>/Gain' incorporates:
+  // Product: '<Root>/Product' incorporates:
   //   DiscreteIntegrator: '<Root>/Discrete-Time Integrator'
+  //   Inport: '<Root>/integral_gain'
 
-  Tire_Model_Codegen_Y.AdditionalMzNm = 1414.0 *
+  Tire_Model_Codegen_Y.AdditionalMzNm = Tire_Model_Codegen_U.integral_gain *
     Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE;
 
   // MATLAB Function: '<Root>/MATLAB Function3' incorporates:
