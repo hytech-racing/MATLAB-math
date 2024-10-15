@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.15
+// Model version                  : 1.16
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 02:27:03 2024
+// C/C++ source code generated on : Tue Oct 15 03:06:37 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -2594,15 +2594,31 @@ void Tire_Model_Codegen::step()
   Tire_Model_Codegen_Y.Linear_Model_Outputs[1] = Tire_Model_Codegen_B.signal2;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[3] = Tire_Model_Codegen_B.signal4;
 
+  // Switch: '<Root>/Switch4' incorporates:
+  //   Inport: '<Root>/useFakeData'
+
+  if (Tire_Model_Codegen_U.useFakeData > 0.0) {
+    // Switch: '<Root>/Switch4' incorporates:
+    //   Inport: '<Root>/fake_psi_dot'
+
+    Tire_Model_Codegen_Y.perceived_psi_dot = Tire_Model_Codegen_U.fake_psi_dot;
+  } else {
+    // Switch: '<Root>/Switch4' incorporates:
+    //   Inport: '<Root>/Psi_dot_VN [rad//s]'
+
+    Tire_Model_Codegen_Y.perceived_psi_dot = Tire_Model_Codegen_U.Psi_dot_VNrads;
+  }
+
+  // End of Switch: '<Root>/Switch4'
+
   // Switch: '<Root>/Switch2'
   if (Tire_Model_Codegen_Y.Perceived_Vx > 2.5) {
     // Switch: '<Root>/Switch2' incorporates:
-    //   Inport: '<Root>/Psi_dot_VN [rad//s]'
     //   Outport: '<Root>/Desired Yaw Rate [rad//s]'
     //   Sum: '<Root>/Sum'
 
     Tire_Model_Codegen_Y.Yaw_Rate_Err = Tire_Model_Codegen_Y.DesiredYawRaterads
-      - Tire_Model_Codegen_U.Psi_dot_VNrads;
+      - Tire_Model_Codegen_Y.perceived_psi_dot;
   } else {
     // Switch: '<Root>/Switch2' incorporates:
     //   Constant: '<Root>/Constant4'
@@ -2621,6 +2637,12 @@ void Tire_Model_Codegen::step()
   // Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator'
   Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE += 0.001 *
     Tire_Model_Codegen_Y.Yaw_Rate_Err;
+  if (Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE > 0.5) {
+    Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE = 0.5;
+  } else if (Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE < -0.5) {
+    Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE = -0.5;
+  }
+
   if (rtb_Switch > 0) {
     Tire_Model_Codegen_DW.DiscreteTimeIntegrator_PrevResetState = 1;
   } else {

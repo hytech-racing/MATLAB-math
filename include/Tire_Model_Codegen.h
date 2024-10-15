@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.15
+// Model version                  : 1.16
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 02:27:03 2024
+// C/C++ source code generated on : Tue Oct 15 03:06:37 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -111,6 +111,7 @@ class Tire_Model_Codegen final
     real_T BrakeBiasFront;             // '<Root>/Brake Bias Front'
     real_T useFakeData;                // '<Root>/useFakeData'
     real_T Fake_Vx;                    // '<Root>/Fake_Vx'
+    real_T fake_psi_dot;               // '<Root>/fake_psi_dot'
   };
 
   // External outputs (root outports fed by signals with default storage)
@@ -156,6 +157,7 @@ class Tire_Model_Codegen final
     real_T Perceived_Vx;               // '<Root>/Perceived_Vx'
     real_T Yaw_Rate_Err;               // '<Root>/Yaw_Rate_Err'
     real_T Integral_Yaw_Rate_Err;      // '<Root>/Integral_Yaw_Rate_Err'
+    real_T perceived_psi_dot;          // '<Root>/perceived_psi_dot'
   };
 
   // Real-time Model Data Structure
