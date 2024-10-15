@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'HT09_Linear_Vehicle_Model'.
 //
-// Model version                  : 2.13
+// Model version                  : 2.15
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 02:20:40 2024
+// C/C++ source code generated on : Tue Oct 15 03:47:12 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -70,7 +70,7 @@ class HT09_Linear_Vehicle_Model final
   void step(const real_T *rtu_DeltaDeg, const real_T *rtu_Vx, const real_T
             *rtu_FZ_FLN, const real_T *rtu_FZ_FRN, const real_T *rtu_FZ_RLN,
             const real_T *rtu_FZ_RRN, real_T *rty_Linear_Model_Output_Vy, real_T
-            *rty_Linear_Model_Output_psi_dot, real_T
+            *rty_Linear_Model_Output_psi_dot_no_gain, real_T
             *rty_Linear_Model_Output_Alpha_Deg_Front, real_T
             *rty_Linear_Model_Output_Alpha_Deg_Rear, real_T *rty_Vy_LM, real_T
             *rty_Psi_dot_LMrads, real_T *rty_Psi_dot_LMdegs, real_T
