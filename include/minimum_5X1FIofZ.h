@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.14
+// Model version                  : 1.15
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Mon Oct 14 19:46:33 2024
+// C/C++ source code generated on : Mon Oct 14 21:56:07 2024
 //
 #ifndef minimum_5X1FIofZ_h_
 #define minimum_5X1FIofZ_h_

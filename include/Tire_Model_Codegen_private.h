@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.20
+// Model version                  : 1.26
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 04:41:13 2024
+// C/C++ source code generated on : Sat Nov  2 04:10:43 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -42,7 +42,7 @@ extern const real_T rtCP_pooled_CyM6QyWYA1Fn[15];
 #define rtCP_Constant5_Value_p         rtCP_pooled_eVOipfIBuU9C  // Expression: tireCoeffs.B
                                                                  //  Referenced by: '<S19>/Constant5'
 
-#define rtCP_Constant6_Value           rtCP_pooled_nIGO1LtxqrbG  // Expression: tireCoeffs.C
+#define rtCP_Constant6_Value_g         rtCP_pooled_nIGO1LtxqrbG  // Expression: tireCoeffs.C
                                                                  //  Referenced by: '<S19>/Constant6'
 
 #define rtCP_Constant7_Value_i         rtCP_pooled_YeSwdPId4EJp  // Expression: tireCoeffs.D

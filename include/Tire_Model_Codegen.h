@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.20
+// Model version                  : 1.26
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Tue Oct 15 04:41:13 2024
+// C/C++ source code generated on : Sat Nov  2 04:10:43 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -113,6 +113,13 @@ class Tire_Model_Codegen final
     real_T Fake_Vx;                    // '<Root>/Fake_Vx'
     real_T fake_psi_dot;               // '<Root>/fake_psi_dot'
     real_T integral_gain;              // '<Root>/integral_gain'
+    real_T psi_dot_gain_slope;         // '<Root>/psi_dot_gain_slope'
+    real_T psi_dot_gain_intercept;     // '<Root>/psi_dot_gain_intercept'
+    real_T vy_vn_gain_slope;           // '<Root>/vy_vn_gain_slope'
+    real_T vy_vn_gain_intercept;       // '<Root>/vy_vn_gain_intercept'
+    real_T fake_vy;                    // '<Root>/fake_vy'
+    real_T Vy_VN;                      // '<Root>/Vy_VN'
+    real_T steering_offset;            // '<Root>/steering_offset'
   };
 
   // External outputs (root outports fed by signals with default storage)
@@ -159,14 +166,16 @@ class Tire_Model_Codegen final
     real_T Yaw_Rate_Err;               // '<Root>/Yaw_Rate_Err'
     real_T Integral_Yaw_Rate_Err;      // '<Root>/Integral_Yaw_Rate_Err'
     real_T perceived_psi_dot;          // '<Root>/perceived_psi_dot'
+    real_T psi_dot_gain;               // '<Root>/psi_dot_gain'
+    real_T vy_vn_gain;                 // '<Root>/vy_vn_gain'
   };
 
   // Real-time Model Data Structure
   struct RT_MODEL_Tire_Model_Codegen_T {
     const char_T *errorStatus;
+    const char_T** getErrorStatusPointer();
     const char_T* getErrorStatus() const;
     void setErrorStatus(const char_T* const aErrorStatus);
-    const char_T** getErrorStatusPointer();
   };
 
   // Copy Constructor

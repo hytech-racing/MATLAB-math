@@ -51,5 +51,5 @@ def unzip_and_organize(zip_path):
     shutil.rmtree(temp_extract_dir)
 
 if __name__ == "__main__":
-    zip_file_path = os.path.join(os.getcwd(), 'asdf.zip')  # Update this if needed
+    zip_file_path = os.path.join(os.getcwd(), 'Tire_Model_Codegen.zip')  # Update this if needed
     unzip_and_organize(zip_file_path)
