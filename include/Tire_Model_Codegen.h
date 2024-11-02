@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.26
+// Model version                  : 1.27
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Sat Nov  2 04:10:43 2024
+// C/C++ source code generated on : Sat Nov  2 04:16:30 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -168,6 +168,7 @@ class Tire_Model_Codegen final
     real_T perceived_psi_dot;          // '<Root>/perceived_psi_dot'
     real_T psi_dot_gain;               // '<Root>/psi_dot_gain'
     real_T vy_vn_gain;                 // '<Root>/vy_vn_gain'
+    real_T perceived_vy;               // '<Root>/perceived_vy'
   };
 
   // Real-time Model Data Structure

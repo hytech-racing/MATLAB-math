@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.26
+// Model version                  : 1.27
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Sat Nov  2 04:10:43 2024
+// C/C++ source code generated on : Sat Nov  2 04:16:30 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -2584,14 +2584,18 @@ void Tire_Model_Codegen::step()
   // End of Switch: '<Root>/Switch6'
 
   // Switch: '<Root>/Switch5' incorporates:
-  //   Inport: '<Root>/Vy_VN'
-  //   Inport: '<Root>/fake_vy'
   //   Inport: '<Root>/useFakeData'
 
   if (Tire_Model_Codegen_U.useFakeData > 0.0) {
-    satBrakeT_f = Tire_Model_Codegen_U.fake_vy;
+    // Switch: '<Root>/Switch5' incorporates:
+    //   Inport: '<Root>/fake_vy'
+
+    Tire_Model_Codegen_Y.perceived_vy = Tire_Model_Codegen_U.fake_vy;
   } else {
-    satBrakeT_f = Tire_Model_Codegen_U.Vy_VN;
+    // Switch: '<Root>/Switch5' incorporates:
+    //   Inport: '<Root>/Vy_VN'
+
+    Tire_Model_Codegen_Y.perceived_vy = Tire_Model_Codegen_U.Vy_VN;
   }
 
   // End of Switch: '<Root>/Switch5'
@@ -2606,7 +2610,7 @@ void Tire_Model_Codegen::step()
   Tire_Model_Codegen_Y.AdditionalMzNm = (Tire_Model_Codegen_U.integral_gain *
     Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE -
     Tire_Model_Codegen_Y.perceived_psi_dot * Tire_Model_Codegen_Y.psi_dot_gain)
-    - Tire_Model_Codegen_Y.vy_vn_gain * satBrakeT_f;
+    - Tire_Model_Codegen_Y.vy_vn_gain * Tire_Model_Codegen_Y.perceived_vy;
 
   // MATLAB Function: '<Root>/MATLAB Function3' incorporates:
   //   Constant: '<Root>/Constant3'
@@ -2698,7 +2702,8 @@ void Tire_Model_Codegen::step()
                     &Tire_Model_Codegen_Y.Perceived_Vx,
                     &Tire_Model_Codegen_Y.FZFL, &Tire_Model_Codegen_Y.FZFR,
                     &Tire_Model_Codegen_Y.FZRL, &Tire_Model_Codegen_Y.FZRR,
-                    &Tire_Model_Codegen_U.steering_offset, &satBrakeT_f,
+                    &Tire_Model_Codegen_U.steering_offset,
+                    &(&Tire_Model_Codegen_Y.Linear_Model_Outputs[0])[0],
                     &Tire_Model_Codegen_Y.Linear_Model_Outputs[2],
                     &Tire_Model_Codegen_Y.Linear_Model_Outputs[4],
                     &Tire_Model_Codegen_Y.Linear_Model_Outputs[5],
@@ -2706,7 +2711,6 @@ void Tire_Model_Codegen::step()
                     &Tire_Model_Codegen_Y.Psi_dot_LMrads,
                     &Tire_Model_Codegen_Y.Psi_dot_LMdegs,
                     &Tire_Model_Codegen_Y.DesiredYawRaterads);
-  Tire_Model_Codegen_Y.Linear_Model_Outputs[0] = satBrakeT_f;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[1] = Tire_Model_Codegen_B.signal2;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[3] = Tire_Model_Codegen_B.signal4;
 
