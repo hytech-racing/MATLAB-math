@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.30
+// Model version                  : 1.32
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Sat Nov  2 05:54:15 2024
+// C/C++ source code generated on : Sat Nov  2 10:08:41 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -49,25 +49,25 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction1(real_T rtu_LC_Raw,
     b_r = 0.0;
   }
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   x[0] = rtu_interp_X;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   y[0] = rtu_interp_Y;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   x[1] = rtu_interp_X_m;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   y[1] = rtu_interp_Y_o;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   x[2] = rtu_interp_X_b;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   y[2] = rtu_interp_Y_a;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   if (rtu_interp_X_m < rtu_interp_X) {
     x[0] = rtu_interp_X_b;
     x[2] = rtu_interp_X;
@@ -76,15 +76,15 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction1(real_T rtu_LC_Raw,
   }
 
   if (x[2] < 0.0) {
-    // SignalConversion generated from: '<S7>/ SFunction '
+    // SignalConversion generated from: '<S9>/ SFunction '
     r = -x[2] / (x[2] - rtu_interp_X_m) * (y[2] - rtu_interp_Y_o) + y[2];
   } else if (x[0] > 0.0) {
-    // SignalConversion generated from: '<S7>/ SFunction '
+    // SignalConversion generated from: '<S9>/ SFunction '
     r = -x[0] / (rtu_interp_X_m - x[0]) * (rtu_interp_Y_o - y[0]) + y[0];
   } else {
     n = 0;
 
-    // SignalConversion generated from: '<S7>/ SFunction '
+    // SignalConversion generated from: '<S9>/ SFunction '
     if (rtu_interp_X_m <= 0.0) {
       n = 1;
     }
@@ -104,25 +104,25 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction1(real_T rtu_LC_Raw,
     }
   }
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   x[0] = rtu_interp_X;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   y[0] = rtu_interp_Y;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   x[1] = rtu_interp_X_m;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   y[1] = rtu_interp_Y_o;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   x[2] = rtu_interp_X_b;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   y[2] = rtu_interp_Y_a;
 
-  // SignalConversion generated from: '<S7>/ SFunction '
+  // SignalConversion generated from: '<S9>/ SFunction '
   if (rtu_interp_X_m < rtu_interp_X) {
     x[0] = rtu_interp_X_b;
     x[2] = rtu_interp_X;
@@ -133,15 +133,15 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction1(real_T rtu_LC_Raw,
   if (std::isnan(b_r)) {
     Vq = (rtNaN);
   } else if (b_r > x[2]) {
-    // SignalConversion generated from: '<S7>/ SFunction '
+    // SignalConversion generated from: '<S9>/ SFunction '
     Vq = (b_r - x[2]) / (x[2] - rtu_interp_X_m) * (y[2] - rtu_interp_Y_o) + y[2];
   } else if (b_r < x[0]) {
-    // SignalConversion generated from: '<S7>/ SFunction '
+    // SignalConversion generated from: '<S9>/ SFunction '
     Vq = (b_r - x[0]) / (rtu_interp_X_m - x[0]) * (rtu_interp_Y_o - y[0]) + y[0];
   } else {
     n = 0;
 
-    // SignalConversion generated from: '<S7>/ SFunction '
+    // SignalConversion generated from: '<S9>/ SFunction '
     if (b_r >= rtu_interp_X_m) {
       n = 1;
     }
@@ -167,7 +167,7 @@ void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction1(real_T rtu_LC_Raw,
   }
 }
 
-// Function for MATLAB Function: '<S19>/MATLAB Function'
+// Function for MATLAB Function: '<S24>/MATLAB Function'
 real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_PSS_FY(const real_T P[22],
   const real_T INPUT[3], const real_T *rtd_EPSILON, const real_T *rtd_FZO, const
   real_T *rtd_LCY, const real_T *rtd_LEY, const real_T *rtd_LFZO, const real_T
@@ -241,7 +241,7 @@ real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_PSS_FY(const real_T P[22
   return FY;
 }
 
-// Function for MATLAB Function: '<S19>/MATLAB Function'
+// Function for MATLAB Function: '<S24>/MATLAB Function'
 real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FY(const real_T
   R[15], const real_T INPUT[4], const real_T *rtd_EPSILON, const real_T *rtd_FZO,
   const real_T *rtd_LCY, const real_T *rtd_LEY, const real_T *rtd_LFZO, const
@@ -325,7 +325,7 @@ real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FY(const real_T
   return FY;
 }
 
-// Function for MATLAB Function: '<S19>/MATLAB Function'
+// Function for MATLAB Function: '<S24>/MATLAB Function'
 real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_PLS_FX(const real_T A[15],
   const real_T INPUT[3], const real_T *rtd_EPSILON, const real_T *rtd_FZO, const
   real_T *rtd_LCX, const real_T *rtd_LEX, const real_T *rtd_LFZO, const real_T
@@ -368,7 +368,7 @@ real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_PLS_FX(const real_T A[15
   return FX;
 }
 
-// Function for MATLAB Function: '<S19>/MATLAB Function'
+// Function for MATLAB Function: '<S24>/MATLAB Function'
 real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_MZ(const real_T
   S[4], const real_T INPUT[4], const real_T *rtd_EPSILON, const real_T *rtd_FZO,
   const real_T *rtd_LCX, const real_T *rtd_LCY, const real_T *rtd_LEX, const
@@ -610,7 +610,7 @@ real_T Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_MZ(const real_T
   return MZ;
 }
 
-// Function for MATLAB Function: '<S19>/MATLAB Function'
+// Function for MATLAB Function: '<S24>/MATLAB Function'
 void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FY_m(const real_T
   R[15], const real_T INPUT[400], real_T FY[100], const real_T *rtd_EPSILON,
   const real_T *rtd_FZO, const real_T *rtd_LCY, const real_T *rtd_LEY, const
@@ -778,7 +778,7 @@ void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FY_m(const real_T
   }
 }
 
-// Function for MATLAB Function: '<S19>/MATLAB Function'
+// Function for MATLAB Function: '<S24>/MATLAB Function'
 void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FX(const real_T
   R[7], const real_T INPUT[400], real_T FX[100], const real_T *rtd_EPSILON,
   const real_T *rtd_FZO, const real_T *rtd_LCX, const real_T *rtd_LEX, const
@@ -885,10 +885,10 @@ void Tire_Model_Codegen::Tire_Model_Codegen_Pacejka52_COMBINED_FX(const real_T
 
 //
 // Output and update for atomic system:
-//    '<S19>/MATLAB Function'
-//    '<S20>/MATLAB Function'
-//    '<S21>/MATLAB Function'
-//    '<S22>/MATLAB Function'
+//    '<S24>/MATLAB Function'
+//    '<S25>/MATLAB Function'
+//    '<S26>/MATLAB Function'
+//    '<S27>/MATLAB Function'
 //
 void Tire_Model_Codegen::Tire_Model_Codegen_MATLABFunction(const real_T
   rtu_LAMBDA[37], const real_T rtu_A[22], const real_T rtu_B[27], const real_T
@@ -1412,7 +1412,6 @@ void Tire_Model_Codegen::step()
   real_T COMBINED_MZ;
   real_T COMBINED_MZ_e;
   real_T COMBINED_MZ_g;
-  real_T COMBINED_MZ_p;
   real_T EPSILON;
   real_T FZO;
   real_T LCX;
@@ -1553,32 +1552,33 @@ void Tire_Model_Codegen::step()
   real_T rtb_Abs1_ao;
   real_T rtb_Abs1_hx;
   real_T rtb_Abs1_p;
-  real_T rtb_FZ;
   real_T rtb_Front;
+  real_T rtb_Switch8;
+  real_T rtb_Vy_p;
   real_T rtb_psi_dot_no_gain_d;
   real_T satAccelT;
-  real_T satAccelT_a;
   real_T satAccelT_k;
   real_T satAccelT_k0;
   real_T satBrakeT_f;
+  real_T satBrakeT_n;
   int32_T rtb_Switch;
 
-  // Gain: '<S23>/Gain' incorporates:
-  //   Gain: '<S6>/Gain8'
+  // Gain: '<S28>/Gain' incorporates:
+  //   Gain: '<S8>/Gain8'
   //   Inport: '<Root>/SA FL'
 
   Saturation = 57.295779513082323 * -Tire_Model_Codegen_U.FL_b;
 
-  // Saturate: '<S6>/Saturation'
+  // Saturate: '<S8>/Saturation'
   if (Saturation > 20.0) {
-    // Saturate: '<S6>/Saturation'
+    // Saturate: '<S8>/Saturation'
     Saturation = 20.0;
   } else if (Saturation < -20.0) {
-    // Saturate: '<S6>/Saturation'
+    // Saturate: '<S8>/Saturation'
     Saturation = -20.0;
   }
 
-  // End of Saturate: '<S6>/Saturation'
+  // End of Saturate: '<S8>/Saturation'
 
   // MATLAB Function: '<S1>/MATLAB Function1' incorporates:
   //   Abs: '<S1>/Abs'
@@ -1594,38 +1594,40 @@ void Tire_Model_Codegen::step()
     Tire_Model_Codegen_U.Interp_x1_FL, Tire_Model_Codegen_U.Interp_x2_FL,
     Tire_Model_Codegen_U.Interp_x3_FL, Tire_Model_Codegen_U.interp_y1_FL,
     Tire_Model_Codegen_U.interp_y2_FL, Tire_Model_Codegen_U.interp_y3_FL,
-    &rtb_FZ);
+    &rtb_Vy_p);
 
   // Switch: '<Root>/Switch8' incorporates:
   //   Inport: '<Root>/fake_fz_fl'
   //   Inport: '<Root>/useFakeData'
 
   if (Tire_Model_Codegen_U.useFakeData > 0.0) {
-    rtb_FZ = Tire_Model_Codegen_U.fake_fz_fl;
+    rtb_Switch8 = Tire_Model_Codegen_U.fake_fz_fl;
+  } else {
+    rtb_Switch8 = rtb_Vy_p;
   }
 
   // End of Switch: '<Root>/Switch8'
 
-  // MATLAB Function: '<S19>/MATLAB Function' incorporates:
-  //   Abs: '<S19>/Abs1'
+  // MATLAB Function: '<S24>/MATLAB Function' incorporates:
+  //   Abs: '<S24>/Abs1'
   //   Constant: '<Root>/Constant1'
-  //   Constant: '<S19>/Constant10'
-  //   Constant: '<S19>/Constant3'
-  //   Constant: '<S19>/Constant4'
-  //   Constant: '<S19>/Constant5'
-  //   Constant: '<S19>/Constant6'
-  //   Constant: '<S19>/Constant7'
-  //   Constant: '<S19>/Constant8'
-  //   Constant: '<S19>/Constant9'
-  //   Gain: '<S19>/Gain'
-  //   Gain: '<S6>/Gain'
+  //   Constant: '<S24>/Constant10'
+  //   Constant: '<S24>/Constant3'
+  //   Constant: '<S24>/Constant4'
+  //   Constant: '<S24>/Constant5'
+  //   Constant: '<S24>/Constant6'
+  //   Constant: '<S24>/Constant7'
+  //   Constant: '<S24>/Constant8'
+  //   Constant: '<S24>/Constant9'
+  //   Gain: '<S24>/Gain'
+  //   Gain: '<S8>/Gain'
   //   Inport: '<Root>/SL FL'
 
   Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_g,
     rtCP_Constant4_Value_a, rtCP_Constant5_Value_p, rtCP_Constant6_Value_g,
     rtCP_Constant7_Value_i, rtCP_Constant8_Value_h, rtCP_Constant9_Value_c,
     rtCP_Constant10_Value_e, Tire_Model_Codegen_U.FL, Saturation, -std::abs
-    (-rtb_FZ), 0.0, &COMBINED_FX_c, &COMBINED_FY_o, &COMBINED_MZ_p,
+    (-rtb_Switch8), 0.0, &COMBINED_FX_c, &COMBINED_FY_o, &rtb_Vy_p,
     &satAccelT_k0, &satBrakeT_f, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX, &LEY,
     &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR, &LMUV,
     &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS, &LT,
@@ -1641,19 +1643,19 @@ void Tire_Model_Codegen::step()
     &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5, &ZETA6,
     &ZETA7, &ZETA8);
 
-  // Switch: '<S19>/Switch3' incorporates:
-  //   Constant: '<S19>/Constant15'
+  // Switch: '<S24>/Switch3' incorporates:
+  //   Constant: '<S24>/Constant15'
   //   Inport: '<Root>/SL FL'
 
   if (Tire_Model_Codegen_U.FL != 0.0) {
-    // Abs: '<S35>/Abs1'
+    // Abs: '<S40>/Abs1'
     rtb_Abs1_hx = std::abs(Tire_Model_Codegen_U.FL);
 
-    // Switch: '<S35>/Switch1' incorporates:
+    // Switch: '<S40>/Switch1' incorporates:
     //   Inport: '<Root>/LMUX FL'
-    //   Polyval: '<S35>/Polynomial'
-    //   Product: '<S19>/Product'
-    //   Product: '<S35>/Product1'
+    //   Polyval: '<S40>/Polynomial'
+    //   Product: '<S24>/Product'
+    //   Product: '<S40>/Product1'
 
     if (rtb_Abs1_hx >= 0.2) {
       COMBINED_FX_c = (((1.7306074402864622E-15 * rtb_Abs1_hx -
@@ -1665,35 +1667,35 @@ void Tire_Model_Codegen::step()
       COMBINED_FX_c *= Tire_Model_Codegen_U.LMUXFL;
     }
 
-    // End of Switch: '<S35>/Switch1'
+    // End of Switch: '<S40>/Switch1'
   } else {
     COMBINED_FX_c = 0.0;
   }
 
-  // End of Switch: '<S19>/Switch3'
+  // End of Switch: '<S24>/Switch3'
 
-  // Switch: '<S28>/Switch' incorporates:
-  //   Gain: '<S28>/Gain8'
+  // Switch: '<S33>/Switch' incorporates:
+  //   Gain: '<S33>/Gain8'
   //   Outport: '<Root>/FX FL'
 
   Tire_Model_Codegen_Y.FXFL = 0.6 * COMBINED_FX_c;
 
-  // Gain: '<S24>/Gain' incorporates:
-  //   Gain: '<S6>/Gain9'
+  // Gain: '<S29>/Gain' incorporates:
+  //   Gain: '<S8>/Gain9'
   //   Inport: '<Root>/SA FR'
 
   Saturation1 = 57.295779513082323 * -Tire_Model_Codegen_U.FR_b;
 
-  // Saturate: '<S6>/Saturation1'
+  // Saturate: '<S8>/Saturation1'
   if (Saturation1 > 20.0) {
-    // Saturate: '<S6>/Saturation1'
+    // Saturate: '<S8>/Saturation1'
     Saturation1 = 20.0;
   } else if (Saturation1 < -20.0) {
-    // Saturate: '<S6>/Saturation1'
+    // Saturate: '<S8>/Saturation1'
     Saturation1 = -20.0;
   }
 
-  // End of Saturate: '<S6>/Saturation1'
+  // End of Saturate: '<S8>/Saturation1'
 
   // MATLAB Function: '<S1>/MATLAB Function2' incorporates:
   //   Abs: '<S1>/Abs1'
@@ -1723,19 +1725,19 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<Root>/Switch9'
 
-  // MATLAB Function: '<S20>/MATLAB Function' incorporates:
-  //   Abs: '<S20>/Abs1'
+  // MATLAB Function: '<S25>/MATLAB Function' incorporates:
+  //   Abs: '<S25>/Abs1'
   //   Constant: '<Root>/Constant1'
-  //   Constant: '<S20>/Constant10'
-  //   Constant: '<S20>/Constant3'
-  //   Constant: '<S20>/Constant4'
-  //   Constant: '<S20>/Constant5'
-  //   Constant: '<S20>/Constant6'
-  //   Constant: '<S20>/Constant7'
-  //   Constant: '<S20>/Constant8'
-  //   Constant: '<S20>/Constant9'
-  //   Gain: '<S20>/Gain'
-  //   Gain: '<S6>/Gain2'
+  //   Constant: '<S25>/Constant10'
+  //   Constant: '<S25>/Constant3'
+  //   Constant: '<S25>/Constant4'
+  //   Constant: '<S25>/Constant5'
+  //   Constant: '<S25>/Constant6'
+  //   Constant: '<S25>/Constant7'
+  //   Constant: '<S25>/Constant8'
+  //   Constant: '<S25>/Constant9'
+  //   Gain: '<S25>/Gain'
+  //   Gain: '<S8>/Gain2'
   //   Inport: '<Root>/SL FR'
 
   Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_a,
@@ -1743,34 +1745,34 @@ void Tire_Model_Codegen::step()
     rtCP_Constant7_Value_ir, rtCP_Constant8_Value_o, rtCP_Constant9_Value_h,
     rtCP_Constant10_Value_l, Tire_Model_Codegen_U.FR, Saturation1, -std::abs
     (-COMBINED_FX_c), 0.0, &rtb_Abs1_hx, &COMBINED_FY_a, &COMBINED_MZ_e,
-    &satAccelT_k, &rtb_psi_dot_no_gain_d, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX,
-    &LEY, &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR,
-    &LMUV, &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS,
-    &LT, &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1, &PDX2,
-    &PDX3, &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2, &PEY3,
-    &PEY4, &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1, &PKY2,
-    &PKY3, &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3, &PVY4,
-    &QBZ1, &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1, &QDZ10,
-    &QDZ11, &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1, &QEZ2, &QEZ3,
-    &QEZ4, &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3, &RBX1, &RBX2,
-    &RBX3, &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2, &REY1, &REY2,
-    &RHX1, &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5, &RVY6, &SSZ1,
-    &SSZ2, &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5,
-    &ZETA6, &ZETA7, &ZETA8);
+    &satAccelT_k, &satBrakeT_n, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX, &LEY,
+    &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR, &LMUV,
+    &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS, &LT,
+    &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1, &PDX2, &PDX3,
+    &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2, &PEY3, &PEY4,
+    &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1, &PKY2, &PKY3,
+    &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3, &PVY4, &QBZ1,
+    &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1, &QDZ10, &QDZ11,
+    &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1, &QEZ2, &QEZ3, &QEZ4,
+    &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3, &RBX1, &RBX2, &RBX3,
+    &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2, &REY1, &REY2, &RHX1,
+    &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5, &RVY6, &SSZ1, &SSZ2,
+    &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5, &ZETA6,
+    &ZETA7, &ZETA8);
 
-  // Switch: '<S20>/Switch3' incorporates:
-  //   Constant: '<S20>/Constant15'
+  // Switch: '<S25>/Switch3' incorporates:
+  //   Constant: '<S25>/Constant15'
   //   Inport: '<Root>/SL FR'
 
   if (Tire_Model_Codegen_U.FR != 0.0) {
-    // Abs: '<S38>/Abs1'
+    // Abs: '<S43>/Abs1'
     rtb_Abs1_ao = std::abs(Tire_Model_Codegen_U.FR);
 
-    // Switch: '<S38>/Switch1' incorporates:
+    // Switch: '<S43>/Switch1' incorporates:
     //   Inport: '<Root>/LMUX FR'
-    //   Polyval: '<S38>/Polynomial'
-    //   Product: '<S20>/Product'
-    //   Product: '<S38>/Product1'
+    //   Polyval: '<S43>/Polynomial'
+    //   Product: '<S25>/Product'
+    //   Product: '<S43>/Product1'
 
     if (rtb_Abs1_ao >= 0.2) {
       rtb_Abs1_hx = (((1.7306074402864622E-15 * rtb_Abs1_ao -
@@ -1782,35 +1784,35 @@ void Tire_Model_Codegen::step()
       rtb_Abs1_hx *= Tire_Model_Codegen_U.LMUXFR;
     }
 
-    // End of Switch: '<S38>/Switch1'
+    // End of Switch: '<S43>/Switch1'
   } else {
     rtb_Abs1_hx = 0.0;
   }
 
-  // End of Switch: '<S20>/Switch3'
+  // End of Switch: '<S25>/Switch3'
 
-  // Switch: '<S29>/Switch' incorporates:
-  //   Gain: '<S29>/Gain8'
+  // Switch: '<S34>/Switch' incorporates:
+  //   Gain: '<S34>/Gain8'
   //   Outport: '<Root>/FX FR'
 
   Tire_Model_Codegen_Y.FXFR = 0.6 * rtb_Abs1_hx;
 
-  // Gain: '<S25>/Gain' incorporates:
-  //   Gain: '<S6>/Gain10'
+  // Gain: '<S30>/Gain' incorporates:
+  //   Gain: '<S8>/Gain10'
   //   Inport: '<Root>/SA RL'
 
   Saturation2 = 57.295779513082323 * -Tire_Model_Codegen_U.RL_g;
 
-  // Saturate: '<S6>/Saturation2'
+  // Saturate: '<S8>/Saturation2'
   if (Saturation2 > 20.0) {
-    // Saturate: '<S6>/Saturation2'
+    // Saturate: '<S8>/Saturation2'
     Saturation2 = 20.0;
   } else if (Saturation2 < -20.0) {
-    // Saturate: '<S6>/Saturation2'
+    // Saturate: '<S8>/Saturation2'
     Saturation2 = -20.0;
   }
 
-  // End of Saturate: '<S6>/Saturation2'
+  // End of Saturate: '<S8>/Saturation2'
 
   // MATLAB Function: '<S1>/MATLAB Function3' incorporates:
   //   Abs: '<S1>/Abs2'
@@ -1840,54 +1842,54 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<Root>/Switch10'
 
-  // MATLAB Function: '<S21>/MATLAB Function' incorporates:
-  //   Abs: '<S21>/Abs1'
+  // MATLAB Function: '<S26>/MATLAB Function' incorporates:
+  //   Abs: '<S26>/Abs1'
   //   Constant: '<Root>/Constant1'
-  //   Constant: '<S21>/Constant10'
-  //   Constant: '<S21>/Constant3'
-  //   Constant: '<S21>/Constant4'
-  //   Constant: '<S21>/Constant5'
-  //   Constant: '<S21>/Constant6'
-  //   Constant: '<S21>/Constant7'
-  //   Constant: '<S21>/Constant8'
-  //   Constant: '<S21>/Constant9'
-  //   Gain: '<S21>/Gain'
-  //   Gain: '<S6>/Gain4'
+  //   Constant: '<S26>/Constant10'
+  //   Constant: '<S26>/Constant3'
+  //   Constant: '<S26>/Constant4'
+  //   Constant: '<S26>/Constant5'
+  //   Constant: '<S26>/Constant6'
+  //   Constant: '<S26>/Constant7'
+  //   Constant: '<S26>/Constant8'
+  //   Constant: '<S26>/Constant9'
+  //   Gain: '<S26>/Gain'
+  //   Gain: '<S8>/Gain4'
   //   Inport: '<Root>/SL RL'
 
   Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_e,
-    rtCP_Constant4_Value_c, rtCP_Constant5_Value_c, rtCP_Constant6_Value_j,
+    rtCP_Constant4_Value_cs, rtCP_Constant5_Value_c, rtCP_Constant6_Value_j,
     rtCP_Constant7_Value_c, rtCP_Constant8_Value_f, rtCP_Constant9_Value_e,
     rtCP_Constant10_Value_g, Tire_Model_Codegen_U.RL, Saturation2, -std::abs
     (-rtb_Abs1_hx), 0.0, &rtb_Abs1_ao, &COMBINED_FY_c, &COMBINED_MZ_g,
-    &satAccelT_a, &rtb_Front, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX, &LEY,
-    &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR, &LMUV,
-    &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS, &LT,
-    &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1, &PDX2, &PDX3,
-    &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2, &PEY3, &PEY4,
-    &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1, &PKY2, &PKY3,
-    &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3, &PVY4, &QBZ1,
-    &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1, &QDZ10, &QDZ11,
-    &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1, &QEZ2, &QEZ3, &QEZ4,
-    &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3, &RBX1, &RBX2, &RBX3,
-    &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2, &REY1, &REY2, &RHX1,
-    &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5, &RVY6, &SSZ1, &SSZ2,
-    &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5, &ZETA6,
-    &ZETA7, &ZETA8);
+    &rtb_psi_dot_no_gain_d, &rtb_Front, &AMU, &EPSILON, &FZO, &LCX, &LCY, &LEX,
+    &LEY, &LFZO, &LHX, &LHY, &LKXKAPPA, &LKYALPHA, &LKYGAMMA, &LKZGAMMA, &LMR,
+    &LMUV, &LMUX, &LMUXAST, &LMUXPRIME, &LMUY, &LMUYAST, &LMUYPRIME, &LMX, &LS,
+    &LT, &LVX, &LVY, &LVYKAPPA, &LXALPHA, &LYKAPPA, &PCX1, &PCY1, &PDX1, &PDX2,
+    &PDX3, &PDY1, &PDY2, &PDY3, &PEX1, &PEX2, &PEX3, &PEX4, &PEY1, &PEY2, &PEY3,
+    &PEY4, &PEY5, &PHX1, &PHX2, &PHY1, &PHY2, &PKX1, &PKX2, &PKX3, &PKY1, &PKY2,
+    &PKY3, &PKY4, &PKY5, &PKY6, &PKY7, &PVX1, &PVX2, &PVY1, &PVY2, &PVY3, &PVY4,
+    &QBZ1, &QBZ10, &QBZ2, &QBZ3, &QBZ5, &QBZ6, &QBZ9, &QCZ1, &QDZ1, &QDZ10,
+    &QDZ11, &QDZ2, &QDZ3, &QDZ4, &QDZ6, &QDZ7, &QDZ8, &QDZ9, &QEZ1, &QEZ2, &QEZ3,
+    &QEZ4, &QEZ5, &QHZ1, &QHZ2, &QHZ3, &QHZ4, &QSX1, &QSX2, &QSX3, &RBX1, &RBX2,
+    &RBX3, &RBY1, &RBY2, &RBY3, &RBY4, &RCX1, &RCY1, &REX1, &REX2, &REY1, &REY2,
+    &RHX1, &RHY1, &RHY2, &RO, &RVY1, &RVY2, &RVY3, &RVY4, &RVY5, &RVY6, &SSZ1,
+    &SSZ2, &SSZ3, &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5,
+    &ZETA6, &ZETA7, &ZETA8);
 
-  // Switch: '<S21>/Switch3' incorporates:
-  //   Constant: '<S21>/Constant15'
+  // Switch: '<S26>/Switch3' incorporates:
+  //   Constant: '<S26>/Constant15'
   //   Inport: '<Root>/SL RL'
 
   if (Tire_Model_Codegen_U.RL != 0.0) {
-    // Abs: '<S41>/Abs1'
+    // Abs: '<S46>/Abs1'
     rtb_Abs1_p = std::abs(Tire_Model_Codegen_U.RL);
 
-    // Switch: '<S41>/Switch1' incorporates:
+    // Switch: '<S46>/Switch1' incorporates:
     //   Inport: '<Root>/LMUX RL'
-    //   Polyval: '<S41>/Polynomial'
-    //   Product: '<S21>/Product'
-    //   Product: '<S41>/Product1'
+    //   Polyval: '<S46>/Polynomial'
+    //   Product: '<S26>/Product'
+    //   Product: '<S46>/Product1'
 
     if (rtb_Abs1_p >= 0.2) {
       rtb_Abs1_ao = (((1.7306074402864622E-15 * rtb_Abs1_p -
@@ -1898,35 +1900,35 @@ void Tire_Model_Codegen::step()
       rtb_Abs1_ao *= Tire_Model_Codegen_U.LMUXRL;
     }
 
-    // End of Switch: '<S41>/Switch1'
+    // End of Switch: '<S46>/Switch1'
   } else {
     rtb_Abs1_ao = 0.0;
   }
 
-  // End of Switch: '<S21>/Switch3'
+  // End of Switch: '<S26>/Switch3'
 
-  // Switch: '<S30>/Switch' incorporates:
-  //   Gain: '<S30>/Gain8'
+  // Switch: '<S35>/Switch' incorporates:
+  //   Gain: '<S35>/Gain8'
   //   Outport: '<Root>/FX RL'
 
   Tire_Model_Codegen_Y.FXRL = 0.6 * rtb_Abs1_ao;
 
-  // Gain: '<S26>/Gain' incorporates:
-  //   Gain: '<S6>/Gain11'
+  // Gain: '<S31>/Gain' incorporates:
+  //   Gain: '<S8>/Gain11'
   //   Inport: '<Root>/SA RR'
 
   Saturation3 = 57.295779513082323 * -Tire_Model_Codegen_U.RR_a;
 
-  // Saturate: '<S6>/Saturation3'
+  // Saturate: '<S8>/Saturation3'
   if (Saturation3 > 20.0) {
-    // Saturate: '<S6>/Saturation3'
+    // Saturate: '<S8>/Saturation3'
     Saturation3 = 20.0;
   } else if (Saturation3 < -20.0) {
-    // Saturate: '<S6>/Saturation3'
+    // Saturate: '<S8>/Saturation3'
     Saturation3 = -20.0;
   }
 
-  // End of Saturate: '<S6>/Saturation3'
+  // End of Saturate: '<S8>/Saturation3'
 
   // MATLAB Function: '<S1>/MATLAB Function4' incorporates:
   //   Abs: '<S1>/Abs3'
@@ -1956,19 +1958,19 @@ void Tire_Model_Codegen::step()
 
   // End of Switch: '<Root>/Switch11'
 
-  // MATLAB Function: '<S22>/MATLAB Function' incorporates:
-  //   Abs: '<S22>/Abs1'
+  // MATLAB Function: '<S27>/MATLAB Function' incorporates:
+  //   Abs: '<S27>/Abs1'
   //   Constant: '<Root>/Constant1'
-  //   Constant: '<S22>/Constant10'
-  //   Constant: '<S22>/Constant3'
-  //   Constant: '<S22>/Constant4'
-  //   Constant: '<S22>/Constant5'
-  //   Constant: '<S22>/Constant6'
-  //   Constant: '<S22>/Constant7'
-  //   Constant: '<S22>/Constant8'
-  //   Constant: '<S22>/Constant9'
-  //   Gain: '<S22>/Gain'
-  //   Gain: '<S6>/Gain6'
+  //   Constant: '<S27>/Constant10'
+  //   Constant: '<S27>/Constant3'
+  //   Constant: '<S27>/Constant4'
+  //   Constant: '<S27>/Constant5'
+  //   Constant: '<S27>/Constant6'
+  //   Constant: '<S27>/Constant7'
+  //   Constant: '<S27>/Constant8'
+  //   Constant: '<S27>/Constant9'
+  //   Gain: '<S27>/Gain'
+  //   Gain: '<S8>/Gain6'
   //   Inport: '<Root>/SL RR'
 
   Tire_Model_Codegen_MATLABFunction(rtCP_Constant3_Value_c,
@@ -1991,19 +1993,19 @@ void Tire_Model_Codegen::step()
     &SSZ4, &VCX, &ZETA0, &ZETA1, &ZETA2, &ZETA3, &ZETA4, &ZETA5, &ZETA6, &ZETA7,
     &ZETA8);
 
-  // Switch: '<S22>/Switch3' incorporates:
-  //   Constant: '<S22>/Constant15'
+  // Switch: '<S27>/Switch3' incorporates:
+  //   Constant: '<S27>/Constant15'
   //   Inport: '<Root>/SL RR'
 
   if (Tire_Model_Codegen_U.RR != 0.0) {
-    // Abs: '<S44>/Abs1'
+    // Abs: '<S49>/Abs1'
     AMU = std::abs(Tire_Model_Codegen_U.RR);
 
-    // Switch: '<S44>/Switch1' incorporates:
+    // Switch: '<S49>/Switch1' incorporates:
     //   Inport: '<Root>/LMUX RR'
-    //   Polyval: '<S44>/Polynomial'
-    //   Product: '<S22>/Product'
-    //   Product: '<S44>/Product1'
+    //   Polyval: '<S49>/Polynomial'
+    //   Product: '<S27>/Product'
+    //   Product: '<S49>/Product1'
 
     if (AMU >= 0.2) {
       AMU = (((1.7306074402864622E-15 * AMU - 3.5736731257900937E-15) * AMU +
@@ -2013,45 +2015,45 @@ void Tire_Model_Codegen::step()
       AMU = COMBINED_FX * Tire_Model_Codegen_U.LMUXRR;
     }
 
-    // End of Switch: '<S44>/Switch1'
+    // End of Switch: '<S49>/Switch1'
   } else {
     AMU = 0.0;
   }
 
-  // End of Switch: '<S22>/Switch3'
+  // End of Switch: '<S27>/Switch3'
 
-  // Switch: '<S31>/Switch' incorporates:
-  //   Gain: '<S31>/Gain8'
+  // Switch: '<S36>/Switch' incorporates:
+  //   Gain: '<S36>/Gain8'
   //   Outport: '<Root>/FX RR'
 
   Tire_Model_Codegen_Y.FXRR = 0.6 * AMU;
 
-  // Switch: '<S15>/Switch1' incorporates:
-  //   Constant: '<S15>/Constant1'
+  // Switch: '<S20>/Switch1' incorporates:
+  //   Constant: '<S20>/Constant1'
 
   if (Saturation != 0.0) {
-    // Switch: '<S6>/Switch7' incorporates:
-    //   Abs: '<S6>/Abs'
-    //   Constant: '<S6>/Constant14'
-    //   Gain: '<S11>/Gain'
-    //   Gain: '<S11>/Gain1'
-    //   Gain: '<S6>/Gain1'
+    // Switch: '<S8>/Switch7' incorporates:
+    //   Abs: '<S8>/Abs'
+    //   Constant: '<S8>/Constant14'
+    //   Gain: '<S13>/Gain'
+    //   Gain: '<S13>/Gain1'
+    //   Gain: '<S8>/Gain1'
     //   Inport: '<Root>/Motor RPM FL'
 
     if (std::abs(0.10472 * Tire_Model_Codegen_U.MotorRPMFL *
                  0.084317032040472181) != 0.0) {
-      // Switch: '<S19>/Switch4' incorporates:
-      //   Constant: '<S19>/Constant12'
+      // Switch: '<S24>/Switch4' incorporates:
+      //   Constant: '<S24>/Constant12'
 
       if (Saturation != 0.0) {
-        // Abs: '<S34>/Abs1'
+        // Abs: '<S39>/Abs1'
         AMU = std::abs(Saturation);
 
-        // Switch: '<S34>/Switch1' incorporates:
+        // Switch: '<S39>/Switch1' incorporates:
         //   Inport: '<Root>/LMUY FL'
-        //   Polyval: '<S34>/Polynomial'
-        //   Product: '<S19>/Product1'
-        //   Product: '<S34>/Product1'
+        //   Polyval: '<S39>/Polynomial'
+        //   Product: '<S24>/Product1'
+        //   Product: '<S39>/Product1'
 
         if (AMU >= 10.0) {
           COMBINED_FY_o = (-5.1674484600257E-19 * AMU * AMU + 1.0) *
@@ -2060,66 +2062,66 @@ void Tire_Model_Codegen::step()
           COMBINED_FY_o *= Tire_Model_Codegen_U.LMUYFL;
         }
 
-        // End of Switch: '<S34>/Switch1'
+        // End of Switch: '<S39>/Switch1'
       } else {
         COMBINED_FY_o = 0.0;
       }
 
-      // End of Switch: '<S19>/Switch4'
+      // End of Switch: '<S24>/Switch4'
       COMBINED_FY_o *= 0.6;
     } else {
       COMBINED_FY_o = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch7'
+    // End of Switch: '<S8>/Switch7'
   } else {
     COMBINED_FY_o = 0.0;
   }
 
-  // End of Switch: '<S15>/Switch1'
+  // End of Switch: '<S20>/Switch1'
 
-  // Switch: '<S15>/Switch'
+  // Switch: '<S20>/Switch'
   if (Saturation > 0.0) {
     // Outport: '<Root>/FY FL' incorporates:
-    //   Abs: '<S15>/Abs'
+    //   Abs: '<S20>/Abs'
 
     Tire_Model_Codegen_Y.FYFL = std::abs(COMBINED_FY_o);
   } else {
     // Outport: '<Root>/FY FL' incorporates:
-    //   Abs: '<S15>/Abs1'
-    //   Gain: '<S32>/Gain'
+    //   Abs: '<S20>/Abs1'
+    //   Gain: '<S37>/Gain'
 
     Tire_Model_Codegen_Y.FYFL = -std::abs(COMBINED_FY_o);
   }
 
-  // End of Switch: '<S15>/Switch'
+  // End of Switch: '<S20>/Switch'
 
-  // Switch: '<S16>/Switch1' incorporates:
-  //   Constant: '<S16>/Constant1'
+  // Switch: '<S21>/Switch1' incorporates:
+  //   Constant: '<S21>/Constant1'
 
   if (Saturation1 != 0.0) {
-    // Switch: '<S6>/Switch6' incorporates:
-    //   Abs: '<S6>/Abs1'
-    //   Constant: '<S6>/Constant13'
-    //   Gain: '<S12>/Gain'
-    //   Gain: '<S12>/Gain1'
-    //   Gain: '<S6>/Gain3'
+    // Switch: '<S8>/Switch6' incorporates:
+    //   Abs: '<S8>/Abs1'
+    //   Constant: '<S8>/Constant13'
+    //   Gain: '<S14>/Gain'
+    //   Gain: '<S14>/Gain1'
+    //   Gain: '<S8>/Gain3'
     //   Inport: '<Root>/Motor RPM FR'
 
     if (std::abs(0.10472 * Tire_Model_Codegen_U.MotorRPMFR *
                  0.084317032040472181) != 0.0) {
-      // Switch: '<S20>/Switch4' incorporates:
-      //   Constant: '<S20>/Constant12'
+      // Switch: '<S25>/Switch4' incorporates:
+      //   Constant: '<S25>/Constant12'
 
       if (Saturation1 != 0.0) {
-        // Abs: '<S37>/Abs1'
+        // Abs: '<S42>/Abs1'
         COMBINED_FY_o = std::abs(Saturation1);
 
-        // Switch: '<S37>/Switch1' incorporates:
+        // Switch: '<S42>/Switch1' incorporates:
         //   Inport: '<Root>/LMUY FR'
-        //   Polyval: '<S37>/Polynomial'
-        //   Product: '<S20>/Product1'
-        //   Product: '<S37>/Product1'
+        //   Polyval: '<S42>/Polynomial'
+        //   Product: '<S25>/Product1'
+        //   Product: '<S42>/Product1'
 
         if (COMBINED_FY_o >= 10.0) {
           COMBINED_FY_o = (-5.1674484600257E-19 * COMBINED_FY_o * COMBINED_FY_o
@@ -2128,66 +2130,66 @@ void Tire_Model_Codegen::step()
           COMBINED_FY_o = COMBINED_FY_a * Tire_Model_Codegen_U.LMUYFR;
         }
 
-        // End of Switch: '<S37>/Switch1'
+        // End of Switch: '<S42>/Switch1'
       } else {
         COMBINED_FY_o = 0.0;
       }
 
-      // End of Switch: '<S20>/Switch4'
+      // End of Switch: '<S25>/Switch4'
       COMBINED_FY_o *= 0.6;
     } else {
       COMBINED_FY_o = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch6'
+    // End of Switch: '<S8>/Switch6'
   } else {
     COMBINED_FY_o = 0.0;
   }
 
-  // End of Switch: '<S16>/Switch1'
+  // End of Switch: '<S21>/Switch1'
 
-  // Switch: '<S16>/Switch'
+  // Switch: '<S21>/Switch'
   if (Saturation1 > 0.0) {
     // Outport: '<Root>/FY FR' incorporates:
-    //   Abs: '<S16>/Abs'
+    //   Abs: '<S21>/Abs'
 
     Tire_Model_Codegen_Y.FYFR = std::abs(COMBINED_FY_o);
   } else {
     // Outport: '<Root>/FY FR' incorporates:
-    //   Abs: '<S16>/Abs1'
-    //   Gain: '<S32>/Gain1'
+    //   Abs: '<S21>/Abs1'
+    //   Gain: '<S37>/Gain1'
 
     Tire_Model_Codegen_Y.FYFR = -std::abs(COMBINED_FY_o);
   }
 
-  // End of Switch: '<S16>/Switch'
+  // End of Switch: '<S21>/Switch'
 
-  // Switch: '<S17>/Switch1' incorporates:
-  //   Constant: '<S17>/Constant1'
+  // Switch: '<S22>/Switch1' incorporates:
+  //   Constant: '<S22>/Constant1'
 
   if (Saturation2 != 0.0) {
-    // Switch: '<S6>/Switch5' incorporates:
-    //   Abs: '<S6>/Abs2'
-    //   Constant: '<S6>/Constant12'
-    //   Gain: '<S13>/Gain'
-    //   Gain: '<S13>/Gain1'
-    //   Gain: '<S6>/Gain5'
+    // Switch: '<S8>/Switch5' incorporates:
+    //   Abs: '<S8>/Abs2'
+    //   Constant: '<S8>/Constant12'
+    //   Gain: '<S15>/Gain'
+    //   Gain: '<S15>/Gain1'
+    //   Gain: '<S8>/Gain5'
     //   Inport: '<Root>/Motor RPM RL'
 
     if (std::abs(0.10472 * Tire_Model_Codegen_U.MotorRPMRL *
                  0.084317032040472181) != 0.0) {
-      // Switch: '<S21>/Switch4' incorporates:
-      //   Constant: '<S21>/Constant12'
+      // Switch: '<S26>/Switch4' incorporates:
+      //   Constant: '<S26>/Constant12'
 
       if (Saturation2 != 0.0) {
-        // Abs: '<S40>/Abs1'
+        // Abs: '<S45>/Abs1'
         COMBINED_FY_o = std::abs(Saturation2);
 
-        // Switch: '<S40>/Switch1' incorporates:
+        // Switch: '<S45>/Switch1' incorporates:
         //   Inport: '<Root>/LMUY RL'
-        //   Polyval: '<S40>/Polynomial'
-        //   Product: '<S21>/Product1'
-        //   Product: '<S40>/Product1'
+        //   Polyval: '<S45>/Polynomial'
+        //   Product: '<S26>/Product1'
+        //   Product: '<S45>/Product1'
 
         if (COMBINED_FY_o >= 10.0) {
           COMBINED_FY_o = (-5.1674484600257E-19 * COMBINED_FY_o * COMBINED_FY_o
@@ -2196,66 +2198,66 @@ void Tire_Model_Codegen::step()
           COMBINED_FY_o = COMBINED_FY_c * Tire_Model_Codegen_U.LMUYRL;
         }
 
-        // End of Switch: '<S40>/Switch1'
+        // End of Switch: '<S45>/Switch1'
       } else {
         COMBINED_FY_o = 0.0;
       }
 
-      // End of Switch: '<S21>/Switch4'
+      // End of Switch: '<S26>/Switch4'
       COMBINED_FY_o *= 0.6;
     } else {
       COMBINED_FY_o = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch5'
+    // End of Switch: '<S8>/Switch5'
   } else {
     COMBINED_FY_o = 0.0;
   }
 
-  // End of Switch: '<S17>/Switch1'
+  // End of Switch: '<S22>/Switch1'
 
-  // Switch: '<S17>/Switch'
+  // Switch: '<S22>/Switch'
   if (Saturation2 > 0.0) {
     // Outport: '<Root>/FY RL' incorporates:
-    //   Abs: '<S17>/Abs'
+    //   Abs: '<S22>/Abs'
 
     Tire_Model_Codegen_Y.FYRL = std::abs(COMBINED_FY_o);
   } else {
     // Outport: '<Root>/FY RL' incorporates:
-    //   Abs: '<S17>/Abs1'
-    //   Gain: '<S32>/Gain2'
+    //   Abs: '<S22>/Abs1'
+    //   Gain: '<S37>/Gain2'
 
     Tire_Model_Codegen_Y.FYRL = -std::abs(COMBINED_FY_o);
   }
 
-  // End of Switch: '<S17>/Switch'
+  // End of Switch: '<S22>/Switch'
 
-  // Switch: '<S18>/Switch1' incorporates:
-  //   Constant: '<S18>/Constant1'
+  // Switch: '<S23>/Switch1' incorporates:
+  //   Constant: '<S23>/Constant1'
 
   if (Saturation3 != 0.0) {
-    // Switch: '<S6>/Switch4' incorporates:
-    //   Abs: '<S6>/Abs3'
-    //   Constant: '<S6>/Constant11'
-    //   Gain: '<S14>/Gain'
-    //   Gain: '<S14>/Gain1'
-    //   Gain: '<S6>/Gain7'
+    // Switch: '<S8>/Switch4' incorporates:
+    //   Abs: '<S8>/Abs3'
+    //   Constant: '<S8>/Constant11'
+    //   Gain: '<S16>/Gain'
+    //   Gain: '<S16>/Gain1'
+    //   Gain: '<S8>/Gain7'
     //   Inport: '<Root>/Motor RPM RR'
 
     if (std::abs(0.10472 * Tire_Model_Codegen_U.MotorRPMRR *
                  0.084317032040472181) != 0.0) {
-      // Switch: '<S22>/Switch4' incorporates:
-      //   Constant: '<S22>/Constant12'
+      // Switch: '<S27>/Switch4' incorporates:
+      //   Constant: '<S27>/Constant12'
 
       if (Saturation3 != 0.0) {
-        // Abs: '<S43>/Abs1'
+        // Abs: '<S48>/Abs1'
         COMBINED_FY_o = std::abs(Saturation3);
 
-        // Switch: '<S43>/Switch1' incorporates:
+        // Switch: '<S48>/Switch1' incorporates:
         //   Inport: '<Root>/LMUY RR'
-        //   Polyval: '<S43>/Polynomial'
-        //   Product: '<S22>/Product1'
-        //   Product: '<S43>/Product1'
+        //   Polyval: '<S48>/Polynomial'
+        //   Product: '<S27>/Product1'
+        //   Product: '<S48>/Product1'
 
         if (COMBINED_FY_o >= 10.0) {
           COMBINED_FY_o = (-5.1674484600257E-19 * COMBINED_FY_o * COMBINED_FY_o
@@ -2264,42 +2266,42 @@ void Tire_Model_Codegen::step()
           COMBINED_FY_o = COMBINED_FY * Tire_Model_Codegen_U.LMUYRR;
         }
 
-        // End of Switch: '<S43>/Switch1'
+        // End of Switch: '<S48>/Switch1'
       } else {
         COMBINED_FY_o = 0.0;
       }
 
-      // End of Switch: '<S22>/Switch4'
+      // End of Switch: '<S27>/Switch4'
       COMBINED_FY_o *= 0.6;
     } else {
       COMBINED_FY_o = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch4'
+    // End of Switch: '<S8>/Switch4'
   } else {
     COMBINED_FY_o = 0.0;
   }
 
-  // End of Switch: '<S18>/Switch1'
+  // End of Switch: '<S23>/Switch1'
 
-  // Switch: '<S18>/Switch'
+  // Switch: '<S23>/Switch'
   if (Saturation3 > 0.0) {
     // Outport: '<Root>/FY RR' incorporates:
-    //   Abs: '<S18>/Abs'
+    //   Abs: '<S23>/Abs'
 
     Tire_Model_Codegen_Y.FYRR = std::abs(COMBINED_FY_o);
   } else {
     // Outport: '<Root>/FY RR' incorporates:
-    //   Abs: '<S18>/Abs1'
-    //   Gain: '<S32>/Gain3'
+    //   Abs: '<S23>/Abs1'
+    //   Gain: '<S37>/Gain3'
 
     Tire_Model_Codegen_Y.FYRR = -std::abs(COMBINED_FY_o);
   }
 
-  // End of Switch: '<S18>/Switch'
+  // End of Switch: '<S23>/Switch'
 
   // Outport: '<Root>/FZ FL'
-  Tire_Model_Codegen_Y.FZFL = rtb_FZ;
+  Tire_Model_Codegen_Y.FZFL = rtb_Switch8;
 
   // Outport: '<Root>/FZ FR'
   Tire_Model_Codegen_Y.FZFR = COMBINED_FX_c;
@@ -2310,60 +2312,60 @@ void Tire_Model_Codegen::step()
   // Outport: '<Root>/FZ RR'
   Tire_Model_Codegen_Y.FZRR = rtb_Abs1_ao;
 
-  // Switch: '<S6>/Switch9' incorporates:
-  //   Constant: '<S6>/Constant7'
-
+  // Switch: '<S8>/Switch9'
   if (Saturation != 0.0) {
-    // Switch: '<S6>/Switch1' incorporates:
-    //   Constant: '<S6>/Constant7'
-    //   Gain: '<S6>/Gain12'
+    // Switch: '<S8>/Switch1' incorporates:
     //   Inport: '<Root>/SL FL'
-    //   Switch: '<S19>/Switch5'
 
     if (Tire_Model_Codegen_U.FL != 0.0) {
-      // Switch: '<S19>/Switch5' incorporates:
-      //   Constant: '<S19>/Constant13'
+      // Switch: '<S24>/Switch5' incorporates:
+      //   Constant: '<S24>/Constant13'
       //   Inport: '<Root>/LMUY FL'
-      //   Product: '<S19>/Product2'
+      //   Product: '<S24>/Product2'
 
       if (Saturation != 0.0) {
-        Saturation = COMBINED_MZ_p * Tire_Model_Codegen_U.LMUYFL;
+        Saturation = rtb_Vy_p * Tire_Model_Codegen_U.LMUYFL;
       } else {
         Saturation = 0.0;
       }
 
-      Saturation *= 0.6;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Gain: '<S8>/Gain12'
+      //   Switch: '<S24>/Switch5'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.6 * Saturation;
     } else {
-      Saturation = 0.0;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Constant: '<S8>/Constant7'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch1'
+    // End of Switch: '<S8>/Switch1'
   } else {
-    Saturation = 0.0;
+    // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+    //   Constant: '<S8>/Constant7'
+
+    Tire_Model_Codegen_Y.torq_req_FL = 0.0;
   }
 
-  // End of Switch: '<S6>/Switch9'
+  // End of Switch: '<S8>/Switch9'
 
   // Outport: '<Root>/MZ FL' incorporates:
-  //   Gain: '<S27>/Gain'
+  //   Gain: '<S32>/Gain'
 
-  Tire_Model_Codegen_Y.MZFL = -Saturation;
+  Tire_Model_Codegen_Y.MZFL = -Tire_Model_Codegen_Y.torq_req_FL;
 
-  // Switch: '<S6>/Switch10' incorporates:
-  //   Constant: '<S6>/Constant8'
-
+  // Switch: '<S8>/Switch10'
   if (Saturation1 != 0.0) {
-    // Switch: '<S6>/Switch2' incorporates:
-    //   Constant: '<S6>/Constant8'
-    //   Gain: '<S6>/Gain13'
+    // Switch: '<S8>/Switch2' incorporates:
     //   Inport: '<Root>/SL FR'
-    //   Switch: '<S20>/Switch5'
 
     if (Tire_Model_Codegen_U.FR != 0.0) {
-      // Switch: '<S20>/Switch5' incorporates:
-      //   Constant: '<S20>/Constant13'
+      // Switch: '<S25>/Switch5' incorporates:
+      //   Constant: '<S25>/Constant13'
       //   Inport: '<Root>/LMUY FR'
-      //   Product: '<S20>/Product2'
+      //   Product: '<S25>/Product2'
 
       if (Saturation1 != 0.0) {
         Saturation = COMBINED_MZ_e * Tire_Model_Codegen_U.LMUYFR;
@@ -2371,38 +2373,43 @@ void Tire_Model_Codegen::step()
         Saturation = 0.0;
       }
 
-      Saturation *= 0.6;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Gain: '<S8>/Gain13'
+      //   Switch: '<S25>/Switch5'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.6 * Saturation;
     } else {
-      Saturation = 0.0;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Constant: '<S8>/Constant8'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch2'
+    // End of Switch: '<S8>/Switch2'
   } else {
-    Saturation = 0.0;
+    // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+    //   Constant: '<S8>/Constant8'
+
+    Tire_Model_Codegen_Y.torq_req_FL = 0.0;
   }
 
-  // End of Switch: '<S6>/Switch10'
+  // End of Switch: '<S8>/Switch10'
 
   // Outport: '<Root>/MZ FR' incorporates:
-  //   Gain: '<S27>/Gain1'
+  //   Gain: '<S32>/Gain1'
 
-  Tire_Model_Codegen_Y.MZFR = -Saturation;
+  Tire_Model_Codegen_Y.MZFR = -Tire_Model_Codegen_Y.torq_req_FL;
 
-  // Switch: '<S6>/Switch11' incorporates:
-  //   Constant: '<S6>/Constant9'
-
+  // Switch: '<S8>/Switch11'
   if (Saturation2 != 0.0) {
-    // Switch: '<S6>/Switch3' incorporates:
-    //   Constant: '<S6>/Constant9'
-    //   Gain: '<S6>/Gain14'
+    // Switch: '<S8>/Switch3' incorporates:
     //   Inport: '<Root>/SL RL'
-    //   Switch: '<S21>/Switch5'
 
     if (Tire_Model_Codegen_U.RL != 0.0) {
-      // Switch: '<S21>/Switch5' incorporates:
-      //   Constant: '<S21>/Constant13'
+      // Switch: '<S26>/Switch5' incorporates:
+      //   Constant: '<S26>/Constant13'
       //   Inport: '<Root>/LMUY RL'
-      //   Product: '<S21>/Product2'
+      //   Product: '<S26>/Product2'
 
       if (Saturation2 != 0.0) {
         Saturation = COMBINED_MZ_g * Tire_Model_Codegen_U.LMUYRL;
@@ -2410,38 +2417,43 @@ void Tire_Model_Codegen::step()
         Saturation = 0.0;
       }
 
-      Saturation *= 0.6;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Gain: '<S8>/Gain14'
+      //   Switch: '<S26>/Switch5'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.6 * Saturation;
     } else {
-      Saturation = 0.0;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Constant: '<S8>/Constant9'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch3'
+    // End of Switch: '<S8>/Switch3'
   } else {
-    Saturation = 0.0;
+    // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+    //   Constant: '<S8>/Constant9'
+
+    Tire_Model_Codegen_Y.torq_req_FL = 0.0;
   }
 
-  // End of Switch: '<S6>/Switch11'
+  // End of Switch: '<S8>/Switch11'
 
   // Outport: '<Root>/MZ RL' incorporates:
-  //   Gain: '<S27>/Gain2'
+  //   Gain: '<S32>/Gain2'
 
-  Tire_Model_Codegen_Y.MZRL = -Saturation;
+  Tire_Model_Codegen_Y.MZRL = -Tire_Model_Codegen_Y.torq_req_FL;
 
-  // Switch: '<S6>/Switch12' incorporates:
-  //   Constant: '<S6>/Constant10'
-
+  // Switch: '<S8>/Switch12'
   if (Saturation3 != 0.0) {
-    // Switch: '<S6>/Switch8' incorporates:
-    //   Constant: '<S6>/Constant10'
-    //   Gain: '<S6>/Gain15'
+    // Switch: '<S8>/Switch8' incorporates:
     //   Inport: '<Root>/SL RR'
-    //   Switch: '<S22>/Switch5'
 
     if (Tire_Model_Codegen_U.RR != 0.0) {
-      // Switch: '<S22>/Switch5' incorporates:
-      //   Constant: '<S22>/Constant13'
+      // Switch: '<S27>/Switch5' incorporates:
+      //   Constant: '<S27>/Constant13'
       //   Inport: '<Root>/LMUY RR'
-      //   Product: '<S22>/Product2'
+      //   Product: '<S27>/Product2'
 
       if (Saturation3 != 0.0) {
         Saturation = COMBINED_MZ * Tire_Model_Codegen_U.LMUYRR;
@@ -2449,83 +2461,93 @@ void Tire_Model_Codegen::step()
         Saturation = 0.0;
       }
 
-      Saturation *= 0.6;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Gain: '<S8>/Gain15'
+      //   Switch: '<S27>/Switch5'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.6 * Saturation;
     } else {
-      Saturation = 0.0;
+      // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+      //   Constant: '<S8>/Constant10'
+
+      Tire_Model_Codegen_Y.torq_req_FL = 0.0;
     }
 
-    // End of Switch: '<S6>/Switch8'
+    // End of Switch: '<S8>/Switch8'
   } else {
-    Saturation = 0.0;
+    // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
+    //   Constant: '<S8>/Constant10'
+
+    Tire_Model_Codegen_Y.torq_req_FL = 0.0;
   }
 
-  // End of Switch: '<S6>/Switch12'
+  // End of Switch: '<S8>/Switch12'
 
   // Outport: '<Root>/MZ RR' incorporates:
-  //   Gain: '<S27>/Gain3'
+  //   Gain: '<S32>/Gain3'
 
-  Tire_Model_Codegen_Y.MZRR = -Saturation;
+  Tire_Model_Codegen_Y.MZRR = -Tire_Model_Codegen_Y.torq_req_FL;
 
   // Outport: '<Root>/satAccelT FL' incorporates:
-  //   Gain: '<S19>/Gain1'
+  //   Gain: '<S24>/Gain1'
   //   Inport: '<Root>/LMUX FL'
-  //   Product: '<S19>/Product3'
+  //   Product: '<S24>/Product3'
 
   Tire_Model_Codegen_Y.satAccelTFL = satAccelT_k0 * Tire_Model_Codegen_U.LMUXFL *
     0.6;
 
   // Outport: '<Root>/satAccelT FR' incorporates:
-  //   Gain: '<S20>/Gain1'
+  //   Gain: '<S25>/Gain1'
   //   Inport: '<Root>/LMUX FR'
-  //   Product: '<S20>/Product3'
+  //   Product: '<S25>/Product3'
 
   Tire_Model_Codegen_Y.satAccelTFR = satAccelT_k * Tire_Model_Codegen_U.LMUXFR *
     0.6;
 
   // Outport: '<Root>/satAccelT RL' incorporates:
-  //   Gain: '<S21>/Gain1'
+  //   Gain: '<S26>/Gain1'
   //   Inport: '<Root>/LMUX RL'
-  //   Product: '<S21>/Product3'
+  //   Product: '<S26>/Product3'
 
-  Tire_Model_Codegen_Y.satAccelTRL = satAccelT_a * Tire_Model_Codegen_U.LMUXRL *
-    0.6;
+  Tire_Model_Codegen_Y.satAccelTRL = rtb_psi_dot_no_gain_d *
+    Tire_Model_Codegen_U.LMUXRL * 0.6;
 
   // Outport: '<Root>/satAccelT RR' incorporates:
-  //   Gain: '<S22>/Gain1'
+  //   Gain: '<S27>/Gain1'
   //   Inport: '<Root>/LMUX RR'
-  //   Product: '<S22>/Product3'
+  //   Product: '<S27>/Product3'
 
   Tire_Model_Codegen_Y.satAccelTRR = satAccelT * Tire_Model_Codegen_U.LMUXRR *
     0.6;
 
   // Outport: '<Root>/satBrakeT FL' incorporates:
-  //   Gain: '<S19>/Gain2'
+  //   Gain: '<S24>/Gain2'
   //   Inport: '<Root>/LMUX FL'
-  //   Product: '<S19>/Product4'
+  //   Product: '<S24>/Product4'
 
   Tire_Model_Codegen_Y.satBrakeTFL = satBrakeT_f * Tire_Model_Codegen_U.LMUXFL *
     0.6;
 
   // Outport: '<Root>/satBrakeT FR' incorporates:
-  //   Gain: '<S20>/Gain2'
+  //   Gain: '<S25>/Gain2'
   //   Inport: '<Root>/LMUX FR'
-  //   Product: '<S20>/Product4'
+  //   Product: '<S25>/Product4'
 
-  Tire_Model_Codegen_Y.satBrakeTFR = rtb_psi_dot_no_gain_d *
-    Tire_Model_Codegen_U.LMUXFR * 0.6;
+  Tire_Model_Codegen_Y.satBrakeTFR = satBrakeT_n * Tire_Model_Codegen_U.LMUXFR *
+    0.6;
 
   // Outport: '<Root>/satBrakeT RL' incorporates:
-  //   Gain: '<S21>/Gain2'
+  //   Gain: '<S26>/Gain2'
   //   Inport: '<Root>/LMUX RL'
-  //   Product: '<S21>/Product4'
+  //   Product: '<S26>/Product4'
 
   Tire_Model_Codegen_Y.satBrakeTRL = rtb_Front * Tire_Model_Codegen_U.LMUXRL *
     0.6;
 
   // Outport: '<Root>/satBrakeT RR' incorporates:
-  //   Gain: '<S22>/Gain2'
+  //   Gain: '<S27>/Gain2'
   //   Inport: '<Root>/LMUX RR'
-  //   Product: '<S22>/Product4'
+  //   Product: '<S27>/Product4'
 
   Tire_Model_Codegen_Y.satBrakeTRR = rtb_Abs1_p * Tire_Model_Codegen_U.LMUXRR *
     0.6;
@@ -2662,7 +2684,7 @@ void Tire_Model_Codegen::step()
   // MATLAB Function: '<Root>/MATLAB Function3' incorporates:
   //   Constant: '<Root>/Constant3'
   //   Inport: '<Root>/Initial Torq Req FL'
-  //   SignalConversion generated from: '<S4>/ SFunction '
+  //   SignalConversion generated from: '<S5>/ SFunction '
 
   rtb_Front = Tire_Model_Codegen_Y.AdditionalMzNm;
   if (Tire_Model_Codegen_U.InitialTorqReqFL <= 0.0) {
@@ -2670,30 +2692,27 @@ void Tire_Model_Codegen::step()
   }
 
   satBrakeT_f = std::abs(rtb_Front) / 0.6 / 2.0 * 0.2 / 11.86;
-  satAccelT_k0 = rtb_FZ + rtb_Abs1_hx;
+  satAccelT_k0 = rtb_Switch8 + rtb_Abs1_hx;
   if (satAccelT_k0 == 0.0) {
     satAccelT_k0 = (rtInf);
   }
 
-  rtb_psi_dot_no_gain_d = COMBINED_FX_c + rtb_Abs1_ao;
-  if (rtb_psi_dot_no_gain_d == 0.0) {
-    rtb_psi_dot_no_gain_d = (rtInf);
+  satBrakeT_n = COMBINED_FX_c + rtb_Abs1_ao;
+  if (satBrakeT_n == 0.0) {
+    satBrakeT_n = (rtInf);
   }
 
   if (rtb_Front > 0.0) {
-    Tire_Model_Codegen_Y.Torq_Add_FL = rtb_FZ / satAccelT_k0 * -satBrakeT_f;
+    Tire_Model_Codegen_Y.Torq_Add_FL = rtb_Switch8 / satAccelT_k0 * -satBrakeT_f;
     Tire_Model_Codegen_Y.Torq_Add_RL = rtb_Abs1_hx / satAccelT_k0 * -satBrakeT_f;
-    Tire_Model_Codegen_Y.Torq_Add_FR = COMBINED_FX_c / rtb_psi_dot_no_gain_d *
-      satBrakeT_f;
-    Tire_Model_Codegen_Y.Torq_Add_RR = rtb_Abs1_ao / rtb_psi_dot_no_gain_d *
-      satBrakeT_f;
+    Tire_Model_Codegen_Y.Torq_Add_FR = COMBINED_FX_c / satBrakeT_n * satBrakeT_f;
+    Tire_Model_Codegen_Y.Torq_Add_RR = rtb_Abs1_ao / satBrakeT_n * satBrakeT_f;
   } else {
-    Tire_Model_Codegen_Y.Torq_Add_FL = rtb_FZ / satAccelT_k0 * satBrakeT_f;
+    Tire_Model_Codegen_Y.Torq_Add_FL = rtb_Switch8 / satAccelT_k0 * satBrakeT_f;
     Tire_Model_Codegen_Y.Torq_Add_RL = rtb_Abs1_hx / satAccelT_k0 * satBrakeT_f;
-    Tire_Model_Codegen_Y.Torq_Add_FR = COMBINED_FX_c / rtb_psi_dot_no_gain_d *
+    Tire_Model_Codegen_Y.Torq_Add_FR = COMBINED_FX_c / satBrakeT_n *
       -satBrakeT_f;
-    Tire_Model_Codegen_Y.Torq_Add_RR = rtb_Abs1_ao / rtb_psi_dot_no_gain_d *
-      -satBrakeT_f;
+    Tire_Model_Codegen_Y.Torq_Add_RR = rtb_Abs1_ao / satBrakeT_n * -satBrakeT_f;
   }
 
   // End of MATLAB Function: '<Root>/MATLAB Function3'
@@ -2706,48 +2725,185 @@ void Tire_Model_Codegen::step()
   //   Inport: '<Root>/Initial Torq Req RL'
   //   Inport: '<Root>/Initial Torq Req RR'
 
-  Saturation = ((Tire_Model_Codegen_U.InitialTorqReqFL +
-                 Tire_Model_Codegen_U.InitialTorqReqFR) +
-                Tire_Model_Codegen_U.InitialTorqReqRL) +
+  satBrakeT_n = ((Tire_Model_Codegen_U.InitialTorqReqFL +
+                  Tire_Model_Codegen_U.InitialTorqReqFR) +
+                 Tire_Model_Codegen_U.InitialTorqReqRL) +
     Tire_Model_Codegen_U.InitialTorqReqRR;
-  if (Saturation >= 0.0) {
-    rtb_Front = Saturation * Tire_Model_Codegen_U.DriveBiasFront / 2.0;
+  if (satBrakeT_n >= 0.0) {
+    rtb_Front = satBrakeT_n * Tire_Model_Codegen_U.DriveBiasFront / 2.0;
     satAccelT_k0 = rtb_Front;
-    satBrakeT_f = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * Saturation / 2.0;
-    rtb_psi_dot_no_gain_d = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) *
-      Saturation / 2.0;
+    satBrakeT_f = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * satBrakeT_n /
+      2.0;
+    satBrakeT_n = (1.0 - Tire_Model_Codegen_U.DriveBiasFront) * satBrakeT_n /
+      2.0;
   } else {
-    rtb_Front = Saturation * Tire_Model_Codegen_U.BrakeBiasFront / 2.0;
+    rtb_Front = satBrakeT_n * Tire_Model_Codegen_U.BrakeBiasFront / 2.0;
     satAccelT_k0 = rtb_Front;
-    satBrakeT_f = (1.0 - Tire_Model_Codegen_U.BrakeBiasFront) * Saturation / 2.0;
-    rtb_psi_dot_no_gain_d = satBrakeT_f;
+    satBrakeT_f = (1.0 - Tire_Model_Codegen_U.BrakeBiasFront) * satBrakeT_n /
+      2.0;
+    satBrakeT_n = satBrakeT_f;
   }
 
   // End of MATLAB Function: '<Root>/MATLAB Function2'
 
-  // Outport: '<Root>/torq_req_FL' incorporates:
+  // MATLAB Function: '<Root>/MATLAB Function1' incorporates:
   //   Sum: '<Root>/Sum1'
+  //   Sum: '<Root>/Sum2'
+  //   Sum: '<Root>/Sum3'
+  //   Sum: '<Root>/Sum4'
 
   Tire_Model_Codegen_Y.torq_req_FL = Tire_Model_Codegen_Y.Torq_Add_FL +
     rtb_Front;
-
-  // Outport: '<Root>/torq_req_FR' incorporates:
-  //   Sum: '<Root>/Sum2'
-
   Tire_Model_Codegen_Y.torq_req_FR = Tire_Model_Codegen_Y.Torq_Add_FR +
     satAccelT_k0;
-
-  // Outport: '<Root>/torq_req_RL' incorporates:
-  //   Sum: '<Root>/Sum3'
-
   Tire_Model_Codegen_Y.torq_req_RL = Tire_Model_Codegen_Y.Torq_Add_RL +
     satBrakeT_f;
-
-  // Outport: '<Root>/torq_req_RR' incorporates:
-  //   Sum: '<Root>/Sum4'
-
   Tire_Model_Codegen_Y.torq_req_RR = Tire_Model_Codegen_Y.Torq_Add_RR +
-    rtb_psi_dot_no_gain_d;
+    satBrakeT_n;
+
+  // Gain: '<Root>/Gain' incorporates:
+  //   Inport: '<Root>/Motor RPM FL'
+
+  satAccelT_k = 0.10472 * Tire_Model_Codegen_U.MotorRPMFL;
+
+  // Gain: '<Root>/Gain1' incorporates:
+  //   Inport: '<Root>/Motor RPM FR'
+
+  satAccelT_k0 = 0.10472 * Tire_Model_Codegen_U.MotorRPMFR;
+
+  // Gain: '<Root>/Gain2' incorporates:
+  //   Inport: '<Root>/Motor RPM RL'
+
+  satBrakeT_n = 0.10472 * Tire_Model_Codegen_U.MotorRPMRL;
+
+  // Gain: '<Root>/Gain3' incorporates:
+  //   Inport: '<Root>/Motor RPM RR'
+
+  satBrakeT_f = 0.10472 * Tire_Model_Codegen_U.MotorRPMRR;
+
+  // Switch: '<Root>/Switch13' incorporates:
+  //   Constant: '<Root>/Constant9'
+  //   Inport: '<Root>/max_mech_power_kw'
+  //   Inport: '<Root>/use_power_limit'
+
+  if (Tire_Model_Codegen_U.use_power_limit > 0.0) {
+    rtb_Front = Tire_Model_Codegen_U.max_mech_power_kw;
+  } else {
+    rtb_Front = 1000.0;
+  }
+
+  // End of Switch: '<Root>/Switch13'
+
+  // Outputs for IfAction SubSystem: '<S7>/HT07 POWER LIMIT' incorporates:
+  //   ActionPort: '<S17>/Action Port'
+
+  // If: '<S7>/If' incorporates:
+  //   Abs: '<S7>/Abs'
+  //   Constant: '<S7>/Constant'
+  //   MATLAB Function: '<Root>/MATLAB Function1'
+  //   MATLAB Function: '<S17>/MATLAB Function'
+  //   Sum: '<S7>/Subtract'
+
+  Saturation = std::abs(satAccelT_k);
+  rtb_Abs1_p = std::abs(satAccelT_k0);
+  rtb_Vy_p = std::abs(satBrakeT_n);
+  Saturation1 = std::abs(satBrakeT_f);
+
+  // End of Outputs for SubSystem: '<S7>/HT07 POWER LIMIT'
+  if (std::abs(((Tire_Model_Codegen_Y.torq_req_FL * Saturation / 1000.0 +
+                 Tire_Model_Codegen_Y.torq_req_FR * rtb_Abs1_p / 1000.0) +
+                Tire_Model_Codegen_Y.torq_req_RL * rtb_Vy_p / 1000.0) +
+               Tire_Model_Codegen_Y.torq_req_RR * Saturation1 / 1000.0) -
+      rtb_Front >= 0.0) {
+    // Outputs for IfAction SubSystem: '<S7>/HT07 POWER LIMIT' incorporates:
+    //   ActionPort: '<S17>/Action Port'
+
+    rtb_psi_dot_no_gain_d = ((std::abs(Tire_Model_Codegen_Y.torq_req_FL) + std::
+      abs(Tire_Model_Codegen_Y.torq_req_FR)) + std::abs
+      (Tire_Model_Codegen_Y.torq_req_RL)) + std::abs
+      (Tire_Model_Codegen_Y.torq_req_RR);
+    Tire_Model_Codegen_Y.torq_req_FL = Tire_Model_Codegen_Y.torq_req_FL /
+      rtb_psi_dot_no_gain_d * rtb_Front * 1000.0 / Saturation;
+    Tire_Model_Codegen_Y.torq_req_FR = Tire_Model_Codegen_Y.torq_req_FR /
+      rtb_psi_dot_no_gain_d * rtb_Front * 1000.0 / rtb_Abs1_p;
+    Tire_Model_Codegen_Y.torq_req_RL = Tire_Model_Codegen_Y.torq_req_RL /
+      rtb_psi_dot_no_gain_d * rtb_Front * 1000.0 / rtb_Vy_p;
+    Tire_Model_Codegen_Y.torq_req_RR = Tire_Model_Codegen_Y.torq_req_RR /
+      rtb_psi_dot_no_gain_d * rtb_Front * 1000.0 / Saturation1;
+    if (std::abs(Tire_Model_Codegen_Y.torq_req_FL) > 21.0) {
+      if (std::isnan(Tire_Model_Codegen_Y.torq_req_FL)) {
+        Saturation = (rtNaN);
+      } else if (Tire_Model_Codegen_Y.torq_req_FL < 0.0) {
+        Saturation = -1.0;
+      } else {
+        Saturation = (Tire_Model_Codegen_Y.torq_req_FL > 0.0);
+      }
+
+      // SignalConversion generated from: '<S17>/PLTorque_FL'
+      Tire_Model_Codegen_Y.torq_req_FL = 21.0 * Saturation;
+    }
+
+    if (std::abs(Tire_Model_Codegen_Y.torq_req_FR) > 21.0) {
+      if (std::isnan(Tire_Model_Codegen_Y.torq_req_FR)) {
+        Saturation = (rtNaN);
+      } else if (Tire_Model_Codegen_Y.torq_req_FR < 0.0) {
+        Saturation = -1.0;
+      } else {
+        Saturation = (Tire_Model_Codegen_Y.torq_req_FR > 0.0);
+      }
+
+      // SignalConversion generated from: '<S17>/PLTorque_FR'
+      Tire_Model_Codegen_Y.torq_req_FR = 21.0 * Saturation;
+    }
+
+    if (std::abs(Tire_Model_Codegen_Y.torq_req_RL) > 21.0) {
+      if (std::isnan(Tire_Model_Codegen_Y.torq_req_RL)) {
+        Saturation = (rtNaN);
+      } else if (Tire_Model_Codegen_Y.torq_req_RL < 0.0) {
+        Saturation = -1.0;
+      } else {
+        Saturation = (Tire_Model_Codegen_Y.torq_req_RL > 0.0);
+      }
+
+      // SignalConversion generated from: '<S17>/PLTorque_RL'
+      Tire_Model_Codegen_Y.torq_req_RL = 21.0 * Saturation;
+    }
+
+    if (std::abs(Tire_Model_Codegen_Y.torq_req_RR) > 21.0) {
+      if (std::isnan(Tire_Model_Codegen_Y.torq_req_RR)) {
+        Saturation = (rtNaN);
+      } else if (Tire_Model_Codegen_Y.torq_req_RR < 0.0) {
+        Saturation = -1.0;
+      } else {
+        Saturation = (Tire_Model_Codegen_Y.torq_req_RR > 0.0);
+      }
+
+      // SignalConversion generated from: '<S17>/PLTorque_RR'
+      Tire_Model_Codegen_Y.torq_req_RR = 21.0 * Saturation;
+    }
+
+    // Outport: '<Root>/power_limit_status' incorporates:
+    //   Constant: '<S17>/Constant1'
+    //   Constant: '<S7>/Constant'
+    //   SignalConversion generated from: '<S17>/Power Lim Status'
+
+    Tire_Model_Codegen_Y.power_limit_status = 2.0;
+
+    // End of Outputs for SubSystem: '<S7>/HT07 POWER LIMIT'
+  } else {
+    // Outputs for IfAction SubSystem: '<S7>/If Action Subsystem2' incorporates:
+    //   ActionPort: '<S18>/Action Port'
+
+    // Outport: '<Root>/power_limit_status' incorporates:
+    //   Constant: '<S18>/Constant1'
+    //   SignalConversion generated from: '<S18>/Power Lim Status'
+
+    Tire_Model_Codegen_Y.power_limit_status = 0.0;
+
+    // End of Outputs for SubSystem: '<S7>/If Action Subsystem2'
+  }
+
+  // End of If: '<S7>/If'
 
   // ModelReference generated from: '<Root>/Model' incorporates:
   //   Inport: '<Root>/Steering Wheel Angle [Deg]'
@@ -2758,9 +2914,9 @@ void Tire_Model_Codegen::step()
   //   Outport: '<Root>/Vy_LM'
 
   ModelMDLOBJ1.step(&Tire_Model_Codegen_U.SteeringWheelAngleDeg,
-                    &Tire_Model_Codegen_Y.Perceived_Vx, &rtb_FZ, &COMBINED_FX_c,
-                    &rtb_Abs1_hx, &rtb_Abs1_ao,
-                    &Tire_Model_Codegen_U.steering_offset, &Saturation,
+                    &Tire_Model_Codegen_Y.Perceived_Vx, &rtb_Switch8,
+                    &COMBINED_FX_c, &rtb_Abs1_hx, &rtb_Abs1_ao,
+                    &Tire_Model_Codegen_U.steering_offset, &rtb_Vy_p,
                     &rtb_psi_dot_no_gain_d, &rtb_Front, &rtb_Abs1_p,
                     &Tire_Model_Codegen_Y.Vy_LM,
                     &Tire_Model_Codegen_Y.Psi_dot_LMrads,
@@ -2768,7 +2924,7 @@ void Tire_Model_Codegen::step()
                     &Tire_Model_Codegen_Y.DesiredYawRaterads);
 
   // Outport: '<Root>/Linear_Model_Outputs'
-  Tire_Model_Codegen_Y.Linear_Model_Outputs[0] = Saturation;
+  Tire_Model_Codegen_Y.Linear_Model_Outputs[0] = rtb_Vy_p;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[1] = Tire_Model_Codegen_B.signal2;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[2] = rtb_psi_dot_no_gain_d;
   Tire_Model_Codegen_Y.Linear_Model_Outputs[3] = Tire_Model_Codegen_B.signal4;
@@ -2797,6 +2953,34 @@ void Tire_Model_Codegen::step()
 
   Tire_Model_Codegen_Y.Integral_Yaw_Rate_Err =
     Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE;
+
+  // Outport: '<Root>/corner_power_kw_fl' incorporates:
+  //   Constant: '<S7>/Constant1'
+  //   Product: '<S7>/Product'
+
+  Tire_Model_Codegen_Y.corner_power_kw_fl = Tire_Model_Codegen_Y.torq_req_FL *
+    satAccelT_k * 0.001;
+
+  // Outport: '<Root>/corner_power_kw_fr' incorporates:
+  //   Constant: '<S7>/Constant2'
+  //   Product: '<S7>/Product1'
+
+  Tire_Model_Codegen_Y.corner_power_kw_fr = Tire_Model_Codegen_Y.torq_req_FR *
+    satAccelT_k0 * 0.001;
+
+  // Outport: '<Root>/corner_power_kw_rl' incorporates:
+  //   Constant: '<S7>/Constant3'
+  //   Product: '<S7>/Product2'
+
+  Tire_Model_Codegen_Y.corner_power_kw_rl = Tire_Model_Codegen_Y.torq_req_RL *
+    satBrakeT_n * 0.001;
+
+  // Outport: '<Root>/corner_power_kw_rr' incorporates:
+  //   Constant: '<S7>/Constant4'
+  //   Product: '<S7>/Product3'
+
+  Tire_Model_Codegen_Y.corner_power_kw_rr = Tire_Model_Codegen_Y.torq_req_RR *
+    satBrakeT_f * 0.001;
 
   // Update for DiscreteIntegrator: '<Root>/Discrete-Time Integrator'
   Tire_Model_Codegen_DW.DiscreteTimeIntegrator_DSTATE += 0.001 *
