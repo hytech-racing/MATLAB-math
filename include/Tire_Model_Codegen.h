@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'Tire_Model_Codegen'.
 //
-// Model version                  : 1.27
+// Model version                  : 1.30
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Sat Nov  2 04:16:30 2024
+// C/C++ source code generated on : Sat Nov  2 05:54:15 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: ARM Compatible->ARM Cortex-A (64-bit)
@@ -24,6 +24,13 @@
 #include "Tire_Model_Codegen_types.h"
 #include "HT09_Linear_Vehicle_Model.h"
 #include "rtGetNaN.h"
+
+extern "C"
+{
+
+#include "rtGetInf.h"
+
+}
 
 // Class declaration for model Tire_Model_Codegen
 class Tire_Model_Codegen final
@@ -120,6 +127,11 @@ class Tire_Model_Codegen final
     real_T fake_vy;                    // '<Root>/fake_vy'
     real_T Vy_VN;                      // '<Root>/Vy_VN'
     real_T steering_offset;            // '<Root>/steering_offset'
+    real_T fake_fz_fl;                 // '<Root>/fake_fz_fl'
+    real_T fake_fz_fr;                 // '<Root>/fake_fz_fr'
+    real_T fake_fz_rl;                 // '<Root>/fake_fz_rl'
+    real_T fake_fz_rr;                 // '<Root>/fake_fz_rr'
+    real_T useTV;                      // '<Root>/useTV'
   };
 
   // External outputs (root outports fed by signals with default storage)
